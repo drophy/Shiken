@@ -1,0 +1,99 @@
+html {
+   height: 100%;
+}
+
+body {
+   background-image: url(images/background1_1080.png);
+   background-size: cover;
+   background-position: center;
+   /* background-repeat: no-repeat; */
+}
+
+#content
+{
+   padding-top: 30%;
+   text-align: center;
+}
+
+/* Button */
+#play-button {
+   border-radius: 30px;
+   border: none;
+   outline: none;
+
+   margin-top: 20px;
+   padding: 10px 50px;
+
+   background-color: #09d079;
+   color: #fff;
+
+   font-size: 32px;
+
+   transition: .3s all ease;
+   cursor: pointer;
+}
+
+#play-button:hover {
+   box-shadow: 0 0 20px rgba(0, 255, 144, 0.53);
+}
+
+/* Logo */
+#logo {
+   animation: fill-animation 0.5s ease forwards 3.5s;
+}
+
+#logo>path:nth-child(1) {
+   stroke-dasharray: 457.7647399902344;
+   stroke-dashoffset: 457.7647399902344;
+   animation: line-animation 2s ease forwards;
+}
+
+#logo>path:nth-child(2) {
+   stroke-dasharray: 397.9131164550781;
+   stroke-dashoffset: 397.9131164550781;
+   animation: line-animation 2s ease forwards 0.3s;
+}
+
+#logo>path:nth-child(3) {
+   stroke-dasharray: 235.95516967773438;
+   stroke-dashoffset: 235.95516967773438;
+   animation: line-animation 2s ease forwards 0.6s;
+}
+
+#logo>path:nth-child(4) {
+   stroke-dasharray: 411.1560363769531;
+   stroke-dashoffset: 411.1560363769531;
+   animation: line-animation 2s ease forwards 0.9s;
+}
+
+#logo>path:nth-child(5) {
+   stroke-dasharray: 309.2236633300781;
+   stroke-dashoffset: 309.2236633300781;
+   animation: line-animation 2s ease forwards 1.2s;
+}
+
+#logo>path:nth-child(6) {
+   stroke-dasharray: 329.2366638183594;
+   stroke-dashoffset: 329.2366638183594;
+   animation: line-animation 2s ease forwards 1.5s;
+}
+
+#logo>path[class="full-path"] /*removes dasharray once animation is done*/
+{
+   stroke-dasharray: 0;
+}
+
+@keyframes line-animation {
+   to {
+      stroke-dashoffset: 0;
+   }
+}
+
+@keyframes fill-animation {
+   from {
+      fill: transparent;
+   }
+   to {
+      fill: #F6A65C;
+   }
+}

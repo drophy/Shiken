@@ -1,0 +1,12 @@
+// TO DO
+- Give it a little tab icon!
+
+// TO FIX / IMPROVE
+- Maybe load the full res background image if the monitor has a resolution higher than 1080p
+
+// FIXED
+Issue: When making the window thiner, a white space appears under the background :/
+Solution: Add html {height: 100%} to CSS (saw it in an old Colt project)
+
+Issue: The logo animation would generate just like 99% of the outline
+Solution: Made stroke-dasharray: 0 at the end with js using: logo[i].addEventListener("animationend", (event) => event.path[0].classList.add("full-path")); and adding that to the class
