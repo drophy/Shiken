@@ -1,5 +1,14 @@
 // TO DO
+- Define colors (please change Sign up and Log in colors; they look too bootstrapy - MAYBE use buttons)
+- Change Play! button on hover
+- Use @media to pick which background image to load
+- Play around with adding a Link gif or something
 - Give it a little tab icon!
+
+// IDEAS
+- In the "enter your username" page, have a random name creator
+- Maybe even throw in a random fact while they wait!
+- Add music!
 
 // TO FIX / IMPROVE
 - Maybe load the full res background image if the monitor has a resolution higher than 1080p

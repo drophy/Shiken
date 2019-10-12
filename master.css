@@ -5,36 +5,64 @@ html {
 body {
    background-image: url(images/background1_1080.png);
    background-size: cover;
-   background-position: center;
-   /* background-repeat: no-repeat; */
+   background-position: 50% 0%;
 }
 
-#content
-{
-   padding-top: 30%;
+/*Code Input*/
+#code-input {
+   height: 55px;
+   width: 200px;
+   outline: none;
+
+   margin-top: 20px;
+   margin-bottom: 20px;
+
+   border: 1px solid #BDBDBD;
+
+   font-size: 32px;
    text-align: center;
+   color: #212121;
+   /* color: #757575; */
+   /* color: #009688; */
+}
+
+input:focus::-webkit-input-placeholder {
+   color: transparent; /*credits: https://stackoverflow.com/questions/11808752/placeholder-doesnt-disappear-upon-focus-in-chrome*/
 }
 
 /* Button */
 #play-button {
-   border-radius: 30px;
-   border: none;
-   outline: none;
+   height: 55px;
 
    margin-top: 20px;
-   padding: 10px 50px;
+   margin-bottom: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
 
+   outline: none;
+   border: 1px solid #BDBDBD;
    background-color: #09d079;
-   color: #fff;
 
    font-size: 32px;
+   color: #fff;
 
-   transition: .3s all ease;
    cursor: pointer;
 }
 
-#play-button:hover {
-   box-shadow: 0 0 20px rgba(0, 255, 144, 0.53);
+/* Credits */
+#background-credits {
+   position: absolute;
+   right: 16px;
+   bottom: 16px;
+   margin: 0;
+
+   color: #757575;
+}
+
+/* Middle Stuff */
+#content {
+   padding-top: 20%;
+   text-align: center;
 }
 
 /* Logo */
