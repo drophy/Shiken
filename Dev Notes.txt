@@ -1,8 +1,10 @@
 // TO DO
+- Remove CODE placeholder for Firefox and other browsers
 - Define colors (please change Sign up and Log in colors; they look too bootstrapy - MAYBE use buttons)
 - Change Play! button on hover
+- Try to make it look ok on phone (the logo could be an image and maybe the credits be shorter)
 - Use @media to pick which background image to load
-- Play around with adding a Link gif or something
+- Play around with adding a Zelda gif or something
 - Give it a little tab icon!
 
 // IDEAS

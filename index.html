@@ -57,8 +57,10 @@
                   <path d="M314.492 39.456C327.164 39.456 333.5 50.016 333.5 71.136C333.5 82.272 332.876 94.08 331.628 106.56L314.78 104.976C315.836 94.032 316.364 82.992 316.364 71.856C316.364 60.624 314.78 55.008 311.612 55.008C310.076 55.008 308.108 58.896 305.708 66.672C303.308 74.352 301.82 81.888 301.244 89.28C301.436 93.216 301.82 100.32 302.396 110.592L285.548 109.008C284.492 95.472 283.964 83.568 283.964 73.296C283.964 63.024 284.252 53.808 284.828 45.648L295.484 46.8C295.676 47.568 296.396 50.688 297.644 56.16C303.212 45.024 308.828 39.456 314.492 39.456Z" stroke="white" stroke-width="5"/>
                </svg>
                <br>
-               <input type="text" id="code-input" placeholder="CODE" maxlength="4">
-               <button id="play-button">Play!</button>
+               <input type="text" id="code-input" maxlength="4" placeholder="CODE" onfocus="this.placeholder=''"
+               onblur="this.placeholder = 'CODE'">
+               <!-- https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+               <button id="play-button" onclick="location.href='username.html';">Play!</button>
             </div>
          </div>
       </div>

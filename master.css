@@ -26,10 +26,6 @@ body {
    /* color: #009688; */
 }
 
-input:focus::-webkit-input-placeholder {
-   color: transparent; /*credits: https://stackoverflow.com/questions/11808752/placeholder-doesnt-disappear-upon-focus-in-chrome*/
-}
-
 /* Button */
 #play-button {
    height: 55px;
@@ -63,6 +59,12 @@ input:focus::-webkit-input-placeholder {
 #content {
    padding-top: 20%;
    text-align: center;
+}
+
+/* Navbar stuff */
+.navbar-text {
+   padding-left: 16px;
+   padding-right: 16px;
 }
 
 /* Logo */

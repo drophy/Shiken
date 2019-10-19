@@ -1,0 +1,5 @@
+TODO
+- Replace image for actual Shiken mascot
+
+IDEAS
+- Generate random name
