@@ -3,10 +3,11 @@
 
 <head>
    <title>Shiken</title>
-
+   
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="google-signin-client_id" content="699577039635-n3fsem84d0s4uql090p9a3qkibl1af4v.apps.googleusercontent.com">
 
    <!-- Compatibility -->
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,14 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Karla|Rubik&display=swap" rel="stylesheet">
+
+   <!-- Our CSS -->
    <link rel="stylesheet" href="master.css">
+
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -61,6 +69,7 @@
                onblur="this.placeholder = 'CODE'">
                <!-- https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
                <button id="play-button" onclick="location.href='username.html';">Play!</button>
+               <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
          </div>
       </div>
@@ -68,6 +77,29 @@
    <div>
       <p id="background-credits">Background artwork by damnmyname at fiverr</p>
    </div>
+   <!-- Modal -->
+   <div class="modal-bg">
+         <div class="modal2">
+            <h2>Sign up</h2>
+            <form id="modal-form" action="index.html" method="post">
+               <div class="input-container">
+                  <!-- https://stackoverflow.com/questions/8639282/notempty-css-selector-is-not-working (Mo. and Derk Jan)-->
+                  <input type="email" name="email" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
+                  <label for="email">
+                     <span>email</span>
+                  </label>
+               </div>
+               <div class="input-container">
+                     <input type="password" name="password" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
+                     <label for="password">
+                        <span>password</span>
+                     </label>
+                  </div>
+               <button type="button">Sign up</button>
+            </form>
+            <span class="modal-exit">x</span>
+         </div>
+      </div>
 
    <!-- Bootstrap JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->

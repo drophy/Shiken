@@ -7,19 +7,25 @@ const arrFacts = [
    `M&M stands for Mars and Murrie.`
 ]
 
-async function getUselessQuote() {
+function getLocalFact() {
+   document.querySelector("#quote p").innerHTML = arrFacts[Math.floor(Math.random()*3)];
+}
+
+async function getUselessFact() {
+   // Fetch, extract and parse fact
    let response = await fetch("https://uselessfacts.jsph.pl/random.json?language=en");
    let json = await response.json();
    let text = json.text.replace(/`/g, `'`);
-   document.querySelector("#quote p").innerHTML = text;
+
+   // Filter some... inappriopriate facts
+   if(text.includes("masturbation") || text.includes("penis") || text.includes("orgasm")) getLocalFact();
+   else document.querySelector("#quote p").innerHTML = text;
 }
 
-let uselessQuote = getUselessQuote()
-   .catch((error) => {
-      document.querySelector("#quote p").innerHTML = arrFacts[Math.floor(Math.random()*3)];
-   });
+getUselessFact()
+   .catch((error) => getLocalFact());
 
-/// BUTTOM LISTENER ///
+/// DISABLE ON CLICK ///
 document.querySelector("button").addEventListener("click", (event) => {
    // document.querySelector("input[type='text']").disabled = "disabled";
    document.querySelector("input[type='text']").setAttribute('readonly', '');

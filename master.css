@@ -1,3 +1,13 @@
+/*
+   font-family: 'Rubik', sans-serif;
+   font-family: 'Karla', sans-serif;
+*/
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
 html {
    height: 100%;
 }
@@ -66,6 +76,163 @@ body {
    padding-left: 16px;
    padding-right: 16px;
 }
+
+/*** MODAL ***/
+.modal-bg {
+   width: 100%;
+   height: 100vh;
+
+   position: fixed; /* we want it to stay even if they scroll */
+   top: 0;
+   left: 0;
+
+   background-color: rgba(0, 0, 0, 0.5);
+
+   display: flex;
+   justify-content: center; /* horizontal */
+   align-items: center; /* vertical */
+
+   visibility: hidden;
+   opacity: 0; /* redundant? */
+   transition: opacity 0.5s;
+}
+
+.modal-bg-active {
+   visibility: visible;
+   opacity: 1;
+}
+
+.modal2 {
+   width: 23%;
+   height: 60%;
+
+   background-color: #ffffff;
+
+   padding: 40px;
+   position: relative; /* so exit "button"'s absolute position works relative to the modal */
+
+   font-family: 'Karla', sans-serif;
+}
+
+.modal2 h2 {
+   font-family: 'Rubik', sans-serif;
+}
+
+#modal-form {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+}
+
+.input-container {
+   width: 100%;
+   height: 50px;
+
+   margin-bottom: 10px;
+
+   display: flex;
+   position: relative;
+   overflow: hidden; /* so our colored border to the left doesn't show up */
+}
+
+.input-container input {
+   width: 100%;
+   height: 100%;
+
+   padding-top: 20px;
+
+   border: none;
+   outline: none;
+}
+
+.input-container label {
+   width: 100%;
+   height: 100%;
+
+   margin: 0;
+   padding: 0;
+   
+   position: absolute;
+   bottom: 0px;
+   left: 0px;
+
+   pointer-events: none; /* so you can click the input that's underneath */
+
+   border-bottom: 1px solid rgb(84, 89, 94);
+}
+
+.input-container label::after {
+   content: "";
+   
+   width: 100%;
+   height: 100%;
+   
+   position: absolute;
+   bottom: -1px; /* so it covers the other border */
+   left: 0px;
+
+   border-bottom: 2px solid rgb(9, 208, 121);
+
+   transform: translateX(-100%);
+   transition: transform 0.3s ease;
+}
+
+.input-container span {
+   width: 100%;
+   
+   position: absolute;
+   bottom: 1px;
+
+   transition: all 0.3s ease;
+}
+
+/* Move label's (span's) text up */
+.input-container input:focus + label span, /* the label is below in the html so we can use + */
+.input-container input:valid + label span
+{
+   transform: translateY(-100%);
+   font-size: 0.95em;
+   color: rgb(9, 208, 121);
+}
+
+/* https://stackoverflow.com/questions/8639282/notempty-css-selector-is-not-working - see Mo's answer*/
+.input-container input[value]:not([value=""]):not(:focus):invalid + label span
+{
+   transform: translateY(-100%);
+   font-size: 0.95em;
+   color: rgb(245, 102, 102);
+}
+
+/* Move in colored border */
+.input-container input:focus + label::after,
+.input-container input:valid + label::after
+{
+   transform: translateX(0);
+}
+
+.input-container input[value]:not([value=""]):not(:focus):invalid + label::after
+{
+   transform: translateX(0);
+   border-color: rgb(245, 102, 102);
+}
+
+/* Exit modal button */
+.modal-exit {
+   position: absolute;
+   top: 5px;
+   right: 11px;
+   color: rgb(245, 102, 102);
+   cursor: pointer;
+}
+
+/* .modal2 button {
+   position: absolute;
+   bottom: 20px;
+   right: 20px;
+
+   width: 100px;
+   margin-top: 20px;
+} */
 
 /* Logo */
 #logo {
