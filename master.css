@@ -103,7 +103,8 @@ body {
 }
 
 .modal2 {
-   width: 23%;
+   width: 80%;
+   max-width: 350px;
    height: 60%;
 
    background-color: #ffffff;
@@ -116,6 +117,10 @@ body {
 
 .modal2 h2 {
    font-family: 'Rubik', sans-serif;
+}
+
+.modal2 hr {
+   border-top: 1px solid rgb(221, 227, 229);
 }
 
 #modal-form {
@@ -225,14 +230,30 @@ body {
    cursor: pointer;
 }
 
-/* .modal2 button {
-   position: absolute;
-   bottom: 20px;
-   right: 20px;
+.modal2 button {
+   height: 40px;
 
-   width: 100px;
    margin-top: 20px;
-} */
+   margin-bottom: 10px;
+
+   outline: none;
+   /* border: 1px solid #BDBDBD; */
+   border: none;
+   background-color: #09d079;
+
+   font-size: 1.25em;
+   color: #fff;
+
+   cursor: pointer;
+}
+
+#google-sign-in {
+   height: 80px;
+   width: 100%;
+   display: flex;
+   justify-content: center; /* horizontal */
+   align-items: center; /* vertical */
+}
 
 /* Logo */
 #logo {
