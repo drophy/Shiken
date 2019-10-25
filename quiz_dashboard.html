@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Shiken</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid rgb(84, 89, 94);
+  }
+
+  th,
+  td {
+    padding: 15px;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(221, 227, 229)
+  }
+
+  tr:nth-child(odd) {
+    background-color: rgb(255, 255, 255)
+  }
+
+  th {
+    background-color: rgb(22, 160, 133);
+    color: white;
+  }
+
+  table select {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    color: rgb(50, 53, 56);
+  }
+
+  #tableDiv {
+    padding: 30px;
+  }
+
+  #optionsDiv {
+    padding: 30px;
+    padding-bottom: 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  #optionsDiv select, #optionsDiv input {
+    height: 38px; /* same as form */
+
+    border-radius: 5px;
+    border: 1px solid rgb(221, 227, 229);
+    outline: none;
+
+    color: rgb(84, 89, 94)
+  }
+
+  label[for="order-criteria"] {
+    margin-left: 20px;
+    margin-right: 5px;
+  }
+
+  label[for="menu"] {
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
+  #new {
+    margin-left: 10px;
+    margin-right: 5px;
+    height: 38px;
+    outline: none;
+    border: none;
+    background-color: rgb(200, 244, 226);
+    box-shadow: 1px 3px rgb(158, 235, 203);
+    position: absolute;
+    right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #user {
+    color: white;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-xl navbar-dark bg-dark pmd-navbar pmd-z-depth fixed-top">
+    <a class="navbar-brand" href="#">Shiken</a>
+    <div class="dropdown pmd-dropdown pmd-user-info ml-auto" id="user">
+      <buttom class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true"
+        aria-expanded="false">
+        <img class="mr-2" src="https://i.pinimg.com/originals/96/3e/41/963e4175d6dfff373be81144c3272b25.jpg"    width="40" height="40" alt="avatar">
+        <i class="fa fa-caret-down"></i>
+        <div class="media-body">
+          User
+        </div>
+      </buttom>
+      <div class="dropdown-menu ">
+        <a class="dropdown-item" href="settings.html">Settings</a>
+        <a class="dropdown-item" href="javascript:void(0);">Logout</a>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+
+  <div id="optionsDiv">
+    <form class="form-inline my-2 my-lg-0">
+      <!-- Search -->
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <!-- Order by -->
+      <label for="order-criteria">Order by</label>
+      <select name="order-criteria">
+        <option value="date">Date created</option>
+        <option value="alphabetical ">Alphabetical </option>
+      </select>
+    </form>
+    <button id="new">
+      + New Quiz
+    </button>
+  </div>
+
+  <div id="tableDiv">
+    <table width="100%">
+      <tr>
+        <th style="width:200px">Quiz</th>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>La ecuacion de dirac <br>
+          <select name="menu">
+            <option value="default" selected>Quiz options</option>
+            <option value="edit">Edit</option>
+            <option value="erase">Delete</option>
+          </select>
+        </td>
+        <td>13/02/2013</td>
+        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
+          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
+          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
+          cuatro componentes</td>
+      </tr>
+      <tr>
+        <td>La ecuacion de dirac 2<br>
+          <select name="menu">
+            <option value="default" selected>Quiz options</option>
+            <option value="edit">Edit</option>
+            <option value="erase">Delete</option>
+          </select>
+        </td>
+        <td>15/02/2013</td>
+        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
+          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
+          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
+          cuatro componentes </td>
+      </tr>
+      <tr>
+        <td>La ecuacion de dirac 3 <br>
+          <select name="menu">
+            <option value="default" selected>Quiz options</option>
+            <option value="edit">Edit</option>
+            <option value="erase">Delete</option>
+          </select>
+        </td>
+        <td>16/02/2013</td>
+        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
+          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
+          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
+          cuatro componentes </td>
+      </tr>
+      <tr>
+        <td>La ecuacion de dirac 4<br>
+          <select name="menu">
+            <option value="default" selected>Quiz options</option>
+            <option value="edit">Edit</option>
+            <option value="erase">Delete</option>
+          </select>
+        </td>
+        <td>19/02/2013</td>
+        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
+          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
+          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
+          cuatro componentes </td>
+      </tr>
+    </table>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

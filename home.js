@@ -19,3 +19,13 @@ document.querySelector('#log-in').addEventListener("click", function() {
 document.querySelector('.modal-exit').addEventListener("click", function() {
    document.querySelector('.modal-bg').classList.remove('modal-bg-active');
 });
+
+/// NAVEGATION BUTTONS ///
+document.querySelector('#play-button').addEventListener("click", function() {
+   location.href='username.html';
+});
+document.querySelector('#modal-form button').addEventListener("click", function() {
+   // Login verification goes here
+   
+   location.href='quiz_dashboard.html';
+});

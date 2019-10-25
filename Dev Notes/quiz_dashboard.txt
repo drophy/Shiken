@@ -1,0 +1,4 @@
+TODO
+- Unify options styles (Search looks too boostrap like compared to our new quiz button)
+- Idk about the dropdowns for the quiz options
+- Add + icon to new quiz button

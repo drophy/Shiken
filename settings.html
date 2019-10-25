@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Shiken</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Karla%7CRubik&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <style>
+    h1 {
+      font-family: 'Rubik', sans-serif;
+    }
+
+    * {
+      font-family: 'Karla', sans-serif;
+    }
+
+    #return-button {
+      margin: 20px 0px;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      height: 50px;
+
+      outline: none;
+      border: none;
+      
+      background-color: rgb(249, 192, 140);
+      box-shadow: 2px 3px rgb(246, 166, 92);
+     
+      font-size: 1.2em;
+    }
+
+    #return-button:hover {
+      background-color: rgb(247, 179, 116);
+      box-shadow: 2px 3px rgb(245, 153, 68);
+    }
+
+    #returnDiv {
+      display: flex;
+      align-items: center;
+    }
+
+    label[for="menu"] {
+      margin-left: 10px;
+      margin-right: 5px;
+    }
+
+    #userInf {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    img {
+      border: 1px solid rgb(84, 89, 94);
+    }
+  </style>
+
+  <div id="userInf">
+    <button id="return-button" onclick="location.href='quiz_dashboard.html'" type="button">
+      <div id="returnDiv"><i data-feather="arrow-left"></i> Return</div>
+    </button>
+    <div class="container bootstrap snippet">
+      <div class="row">
+        <div class="col-sm-10">
+          <h1>User name</h1>
+        </div>
+        <!-- <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <!--left col-->
+        </div>
+
+        <div class="text-center">
+          <img src="https://i.pinimg.com/originals/96/3e/41/963e4175d6dfff373be81144c3272b25.jpg" alt="avatar" height="200px">
+          <h6>Upload a different profile picture...</h6>
+          <input type="file" class="text-center center-block file-upload">
+        </div><br>
+
+
+
+
+
+      </div>
+      <!--/col-3-->
+
+
+      <div class="tab-content">
+
+        <div class="tab-pane" id="home">
+          <hr>
+          <form class="form" action="##" method="post" id="registrationForm">
+            <table>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="first_name">
+                        <h4>Username</h4>
+                      </label>
+                      <input type="text" class="form-control" name="username">
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="email">
+                        <h4>Email</h4>
+                      </label>
+                      <input type="email" class="form-control" name="email" id="email"
+                        title="enter your email.">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password">
+                        <h4>Password</h4>
+                      </label>
+                      <input type="password" class="form-control" name="password" id="password"
+                        title="enter your password.">
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password2">
+                        <h4>Verify Password</h4>
+                      </label>
+                      <input type="password" class="form-control" name="password2" id="password2">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <br>
+                      <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
+                        Save changes</button>
+                      <!-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset waifus</button> -->
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+          </form>
+          </hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    feather.replace()
+  </script>
+</body>
+
+</html>
