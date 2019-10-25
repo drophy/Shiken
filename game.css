@@ -1,0 +1,149 @@
+#wrapper{
+    border-width: 5px;
+    min-height:100%;
+    max-height: 100%;
+    background-color: #fff;
+    position: absolute;
+}
+
+.btn{
+    border-color: rgb(221, 248, 237);
+    background-color: rgb(221, 248, 237);
+    color: rgb(78, 114, 116);
+    font-weight: bold;
+}
+
+#Answers{
+    width: 70%;
+    /* border-left-color: rgb(78, 114, 116);
+    border-right-color: rgb(78, 114, 116);
+    border-left-style: solid;
+    border-right-style: solid; */
+}
+
+#Answers button{
+    align-items: center;
+    width: 280px;
+    height: 80px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(221, 227, 229);
+    background-color: #fff; 
+}
+
+#Answers button:active{
+    background-color: #F6A65C;
+}
+
+
+.txt{
+    width:100%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(78, 114, 116);
+}
+
+button img{
+    height:25px;
+    width: 25px;
+}
+
+#minusBtn{
+    background-image: url("minus.png");
+}
+
+#plusBtn{
+    background-image: url("plus.png");
+}
+
+#navDiv input{
+    background-color: white;
+    text-align: center;
+    border-color: rgb(78, 114, 116);
+    border-width: 3px;
+    width:80px;
+}
+
+#leftArrow{
+    background-image: url("lArrow.png");
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;   
+}
+
+#rightArrow{
+    background-image: url("rArrow.png");
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;   
+}
+
+#Nav input{
+    text-align:center;
+    border-color: rgb(78, 114, 116);
+    border-width: 3px;
+    border-style: solid;
+}
+
+#clk{
+    width:120px;
+    height: 50px;
+    border-style:solid;
+    border-width: 3px;
+    border-color: rgb(78, 114, 116);
+    border-radius: 15px;
+}
+
+#Question{
+    flex-direction: row;
+    position:relative;
+    background-color: rgb(221, 227, 229);
+    border-radius: 20px;
+    width: 80%;
+    text-align: center;
+    margin: 30px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#Nav, #Footer{
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+#Nav {
+    background-color: #1abc9c;
+}
+
+#Footer {
+    background-color: rgb(84, 89, 94);
+}
+
+#QImg{
+    align-self: center;
+    max-width: 50%;
+    max-height:50%;
+    margin:20px;
+    border-radius: 20px;
+}
+#QText{
+    border-width: 3px;
+    border-color: rgb(78, 114, 116);
+    font-weight: bold;
+    font-size: 2em;
+    border-radius: 25px;
+    padding: 10px 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.imgBtn{
+    border-style:solid;
+    border-width: 3px;
+    border-color: rgb(78, 114, 116);
+    background-color: rgb(221, 248, 237);
+    width:50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}

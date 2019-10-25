@@ -125,10 +125,10 @@
       <label for="order-criteria">Order by</label>
       <select name="order-criteria">
         <option value="date">Date created</option>
-        <option value="alphabetical ">Alphabetical </option>
+        <option value="alphabetical ">Alphabetical</option>
       </select>
     </form>
-    <button id="new">
+    <button id="new" onclick="location.href='editor.html'">
       + New Quiz
     </button>
   </div>
@@ -144,6 +144,7 @@
         <td>La ecuacion de dirac <br>
           <select name="menu">
             <option value="default" selected>Quiz options</option>
+            <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
             <option value="erase">Delete</option>
           </select>
@@ -158,6 +159,7 @@
         <td>La ecuacion de dirac 2<br>
           <select name="menu">
             <option value="default" selected>Quiz options</option>
+            <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
             <option value="erase">Delete</option>
           </select>
@@ -172,6 +174,7 @@
         <td>La ecuacion de dirac 3 <br>
           <select name="menu">
             <option value="default" selected>Quiz options</option>
+            <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
             <option value="erase">Delete</option>
           </select>
@@ -186,6 +189,7 @@
         <td>La ecuacion de dirac 4<br>
           <select name="menu">
             <option value="default" selected>Quiz options</option>
+            <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
             <option value="erase">Delete</option>
           </select>
@@ -206,6 +210,14 @@
   </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <script>
+    document.querySelectorAll('select').forEach((dropdown) => {
+      dropdown.addEventListener("change", function() {
+        if(event.target.value === "start") location.href='standings2.html';
+      });
+    });
   </script>
 </body>
 

@@ -31,3 +31,9 @@ document.querySelector("button").addEventListener("click", (event) => {
    document.querySelector("input[type='text']").setAttribute('readonly', '');
    console.log(event.target.disabled = true);
 });
+
+
+/// START GAME (temp) ///
+setTimeout(function() {
+   location.href='game.html';
+}, 10000);

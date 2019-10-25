@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--Meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Compatibility-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+     crossorigin="anonymous">
+     <!--Style sheet-->
+     <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<div id="wrapper" class="d-flex flex-column">
+    <div id="Nav" class="d-flex">
+        <div id="navDiv" class="d-flex">
+         <button id="leftArrow" type="button" class="imgBtn"></button>
+         <input  class="noedit" type="text" value="02 / 02" readonly>
+         <button id="rightArrow" type="button" class="imgBtn"></button>
+        </div>
+        <div id="timeDiv" class="d-flex">
+            <input  id="clk" class="noedit" type="text" value="00:20" readonly>
+            <button id="clkBtn" type="button" class="btn btn-primary">Set All</button>
+        </div>
+        <div class="d-flex">
+            <button id="cogBtn" data-toggle="modal" data-target="#modelId" type="button" class="imgBtn"></button>
+        </div>
+    </div>
+
+    <div id="Question" class="d-flex flex-grow-1">
+        <img id="QImg" src="https://img2.gelbooru.com//images/9f/82/9f8218c9ac57e950f4b7bee129379347.jpg">
+        <textarea id="QText" name="QuestionText" rows="7" cols="29" maxlength="200" placeholder="You can type your question here!"></textarea>
+    </div>
+
+    <div id="Footer" class="d-flex">
+        <button id="minusBtn" type="button" class="imgBtn"></button>
+        
+        <div id="Answers" class="d-flex justify-content-around flex-grow-1">
+            <div class="d-flex flex-column">
+                <input type="checkbox"/>
+                <input type="text" class="txt">
+            </div>
+            <div class="d-flex flex-column">
+                <input type="checkbox" />
+                <input type="text" class="txt">
+            </div>
+            <div class="d-flex flex-column">
+                <input type="checkbox" />
+                <input type="text" class="txt">
+            </div>
+            <div class="d-flex flex-column">
+                <input type="checkbox" />
+                <input type="text" class="txt">
+            </div>
+        </div>
+        
+        <button id="plusBtn" type="button" class="imgBtn"></button>
+    </div>
+  
+</div>
+
+</body>
+</html>
