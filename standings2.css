@@ -1,0 +1,72 @@
+/*
+   FONTS   
+   font-family: 'Rubik', sans-serif;
+   font-family: 'Karla', sans-serif;
+*/
+
+* {
+   margin: 0;
+   padding: 0;
+   background-color: rgb(250, 207, 166);
+   color: rgb(50, 53, 56);
+}
+
+#head-container {
+   width: 100%;
+   min-height: 10vh;
+   
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   font-family: 'Rubik', sans-serif;
+}
+
+#body-container {
+   width: 100%;
+   min-height: 200px;
+   height: 90vh;
+
+   border-radius: 5px;
+
+   display: flex;
+   justify-content: center;
+
+   font-family: 'Karla', sans-serif;
+}
+
+#card-container {
+   box-sizing: border-box;
+   width: 80%;
+   max-width: 500px;
+   height: 90%;
+   border-radius: 10px;
+
+   padding: 15px;
+
+   background-color: rgb(242, 125, 18);
+
+   display: flex;
+   flex-direction: column;
+}
+
+.card {
+   box-sizing: border-box;
+   width: 100%;
+   border-radius: 10px;;
+   height: 50px;
+   margin-bottom: 5px;
+   padding: 10px;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   overflow: hidden; /* works but it pushes the score, so we'll probs have to encapsule the name's label*/
+
+   background-color: rgb(246, 166, 92);
+}
+
+.card span {
+   background-color: inherit;
+   color: white;
+}

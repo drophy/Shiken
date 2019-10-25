@@ -6,7 +6,14 @@ for(let i = 0; i < logo.length; i++) {
 }
 
 /// OPEN & CLOSE MODAL ///
-document.querySelector('.nav-link').addEventListener("click", function(){
+document.querySelector('#sign-up').addEventListener("click", function(){
+   document.querySelector('.modal2 h2').innerText = "Sign up";
+   document.querySelector('.modal2 form button').innerText = "Sign up";
+   document.querySelector('.modal-bg').classList.add('modal-bg-active');
+});
+document.querySelector('#log-in').addEventListener("click", function() {
+   document.querySelector('.modal2 h2').innerText = "Log in";
+   document.querySelector('.modal2 form button').innerText = "Log in";
    document.querySelector('.modal-bg').classList.add('modal-bg-active');
 });
 document.querySelector('.modal-exit').addEventListener("click", function() {

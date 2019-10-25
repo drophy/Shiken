@@ -34,10 +34,10 @@
             <span class="navbar-text d-none d-lg-block">Want to create your own quiz?</span>
          </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Sign up</a>
+            <a id="sign-up" class="nav-link" href="#">Sign up</a>
          </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
+            <a id="log-in" class="nav-link" href="#">Log in</a>
          </li>
       </ul>
    </nav>
@@ -73,36 +73,38 @@
          </div>
       </div>
    </div>
+
    <div>
       <p id="background-credits">Background artwork by damnmyname at fiverr</p>
    </div>
+
    <!-- Modal -->
    <div class="modal-bg">
-         <div class="modal2">
-            <h2>Sign up</h2>
-            <form id="modal-form" action="index.html" method="post">
-               <div class="input-container">
-                  <!-- https://stackoverflow.com/questions/8639282/notempty-css-selector-is-not-working (Mo. and Derk Jan)-->
-                  <input type="email" name="email" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
-                  <label for="email">
-                     <span>email</span>
+      <div class="modal2">
+         <h2>Sign up</h2>
+         <form id="modal-form" action="index.html" method="post">
+            <div class="input-container">
+               <!-- https://stackoverflow.com/questions/8639282/notempty-css-selector-is-not-working (Mo. and Derk Jan)-->
+               <input type="email" name="email" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
+               <label for="email">
+                  <span>email</span>
+               </label>
+            </div>
+            <div class="input-container">
+                  <input type="password" name="password" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
+                  <label for="password">
+                     <span>password</span>
                   </label>
                </div>
-               <div class="input-container">
-                     <input type="password" name="password" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
-                     <label for="password">
-                        <span>password</span>
-                     </label>
-                  </div>
-               <button type="button">Sign up</button>
-            </form>
-            <hr>
-            <div id="google-sign-in">
-               <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            </div>
-            <span class="modal-exit">x</span>
+            <button type="button">Sign up</button>
+         </form>
+         <hr>
+         <div id="google-sign-in">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
          </div>
+         <span class="modal-exit">x</span>
       </div>
+   </div>
 
    <!-- Bootstrap JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->

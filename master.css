@@ -27,13 +27,11 @@ body {
    margin-top: 20px;
    margin-bottom: 20px;
 
-   border: 1px solid #BDBDBD;
+   border: 1px solid #dde3e5;
 
    font-size: 32px;
    text-align: center;
-   color: #212121;
-   /* color: #757575; */
-   /* color: #009688; */
+   color: #323538;
 }
 
 /* Button */
@@ -46,7 +44,7 @@ body {
    padding-right: 20px;
 
    outline: none;
-   border: 1px solid #BDBDBD;
+   border: 1px solid #dde3e5;
    background-color: #09d079;
 
    font-size: 32px;
@@ -72,9 +70,39 @@ body {
 }
 
 /* Navbar stuff */
-.navbar-text {
-   padding-left: 16px;
+.navbar-text /* just affects the "want to create your own quiz?" part rn */
+{
    padding-right: 16px;
+}
+
+#sign-up, #log-in {
+   margin-left: 5px;
+   margin-right: 5px;
+
+   border-radius: 10px;
+   /* border: 1px solid black; */
+}
+
+#sign-up {
+   background-color: rgb(9, 208, 121);
+   box-shadow: 1px 2px rgb(8, 184, 107);
+   color: rgb(255, 255, 255);
+}
+
+#log-in {
+   background-color: rgb(200, 244, 226);
+   box-shadow: 1px 2px rgb(179, 239, 215);
+   color: rgb(84, 89, 94);
+}
+
+#sign-up:hover {
+   background-color: rgb(8, 184, 107);
+   box-shadow: 1px 2px rgb(7, 159, 93);
+}
+
+#log-in:hover {
+   background-color: rgb(179, 239, 215);
+   box-shadow: 1px 2px rgb(158, 235, 203);
 }
 
 /*** MODAL ***/
@@ -188,7 +216,10 @@ body {
    position: absolute;
    bottom: 1px;
 
-   transition: all 0.3s ease;
+   /* transition: all 0.3s ease; using 'all' made if fade out when modal was closed */
+   transition-property: transform, font-size, color;
+   transition-duration: 0.3s;
+   transition-timing-function: ease;
 }
 
 /* Move label's (span's) text up */
