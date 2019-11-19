@@ -1,4 +1,5 @@
 /// DATA BASE ///
+/*
 function getDB() {
    objGames = localStorage.objGames? JSON.parse(localStorage.objGames) : {};
    objPasswords = localStorage.objPasswords? JSON.parse(localStorage.objPasswords) : {};
@@ -11,20 +12,21 @@ function updateDB() {
 
 let objGames, objPasswords;
 getDB();
+*/
 
-// objGames = {
-//    '1234': {
-//       title: 'quantum physics quiz',
-//       date: '2019-11-17',
-//       arrQuestions: [],
-//       arrAnswers: [[], [], []]
-//       // etc.
-//    }
-// }
+let objGames = {
+   '1234': {
+      title: 'quantum physics quiz',
+      date: '2019-11-17',
+      arrQuestions: [],
+      arrAnswers: [[], [], []]
+      // etc.
+   }
+}
 
-// objPasswords = {
-//    'drophy@gmail.com': 'holi'
-// }
+let objPasswords = {
+   'drophy@gmail.com': 'holi'
+}
 
 /// LOCAL STORAGE ///
 // Note: keys and values for local storage must be strings :o
@@ -98,7 +100,7 @@ document.querySelector('#modal-form button').addEventListener("click", function(
       else {
          objPasswords[htmlEmailInput.value] = htmlPasswordInput.value; // register user
          localStorage.email = htmlEmailInput.value; // preserve their email
-         updateDB();
+         //updateDB();
          location.href='quiz_dashboard.html'; // let them in
       }
    }
@@ -107,7 +109,7 @@ document.querySelector('#modal-form button').addEventListener("click", function(
       // Validate it's the right password
       if(objPasswords[htmlEmailInput.value] == htmlPasswordInput.value) {
          localStorage.email = htmlEmailInput.value;
-         updateDB();
+         //updateDB();
          location.href='quiz_dashboard.html';
       }
       else {

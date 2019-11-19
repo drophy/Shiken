@@ -1,6 +1,7 @@
 console.log("username.js connected");
 
 /// DATA BASE ///
+/*
 function getDB() {
    objGames = localStorage.objGames? JSON.parse(localStorage.objGames) : {};
 }
@@ -8,8 +9,17 @@ function getDB() {
 function updateDB() {
    localStorage.objGames = JSON.stringify(objGames);
 }
+*/
 
-let objGames;
+let objGames = {
+   '1234': {
+      title: 'quantum physics quiz',
+      date: '2019-11-17',
+      arrQuestions: [],
+      arrAnswers: [[], [], []],
+      players: []
+   }
+}
 
 /// GET RANDOM FACT ///
 const arrFacts = [
@@ -42,7 +52,7 @@ document.querySelector("button").addEventListener("click", (event) => {
    let desiredUsername = htmlInput.value;
    
    // Validate it's an unique username
-   getDB();
+   //getDB();
    objGames[localStorage.code].players.forEach((objPlayer) => {
       if(objPlayer.username == desiredUsername) {
          // Let user know the username is taken
@@ -53,7 +63,7 @@ document.querySelector("button").addEventListener("click", (event) => {
 
    // Save it to the DB
    objGames[localStorage.code].players.push({username: desiredUsername, points: 0});
-   updateDB();
+   //updateDB();
 
    // Save locally so we can assign points to them
    localStorage.username = desiredUsername;
@@ -65,6 +75,6 @@ document.querySelector("button").addEventListener("click", (event) => {
 
 
 /// START GAME (temp) ///
-// setTimeout(function() {
-//    location.href='game.html';
-// }, 10000);
+setTimeout(function() {
+   location.href='voter.html';
+}, 10000);

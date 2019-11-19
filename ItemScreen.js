@@ -62,5 +62,5 @@ function init(){
 init();
 
 setTimeout(function(){
-    location.replace("TestInGame.html");}
+    location.replace("voter.html");}
     , 10_000);
