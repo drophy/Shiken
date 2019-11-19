@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--Meta-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Compatibility-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <!--Style sheet-->
+     <link rel="stylesheet" href="TestEdit.css">
+</head>
+<body>
+
+<div id="wrapper" class="d-flex flex-column">
+    <div id="Nav" class="d-flex">
+        <div id="navDiv" class="d-flex">
+         <button id="leftArrow" type="button" class="ShikenBtn ImgBtn"></button>
+         <input id="pageIn" class="noedit" type="text" value="02 / 02" readonly>
+         <button id="rightArrow" type="button" class="ShikenBtn ImgBtn"></button>
+        </div>
+        <div id="reactiveManager" class="row justify-content-center">
+          <button id="deleteReactive" type="button" class="ShikenBtn">Delete Question</button>
+          <button id="addReactive" type="button" class="ShikenBtn">Add Question</button>
+        </div>
+        <div id="timeDiv" class="d-flex">
+            <input  id="clk" type="text" value="20">
+            <button id="clkBtn" type="button" class="ShikenBtn">Set Time</button>
+        </div>
+        <div class="d-flex">
+            <button id="cogBtn" data-toggle="modal" data-target="#OptionsModal" type="button" class="ShikenBtn ImgBtn"></button>
+        </div>
+    </div>
+
+    <div id="Question" class="d-flex flex-grow-1">
+        <img id="QImg" src="https://img2.gelbooru.com//images/9f/82/9f8218c9ac57e950f4b7bee129379347.jpg" data-toggle="modal" data-target="#ImageModal">
+        <div id="QContainer" class="col">
+          <textarea id="QText" name="QuestionText" rows="7" cols="29" maxlength="200" placeholder="You can type your question here!"></textarea>
+          <button id="toggleImg" class="ShikenBtn">Toggle Image</button>
+        </div>
+    </div>
+
+    <div id="Footer" class="d-flex">
+        <button id="minusBtn" type="button" class="ShikenBtn ImgBtn"></button>
+        
+        <div id="Answers" class="d-flex justify-content-around flex-grow-1">
+            <div class="d-flex flex-column">
+                <a>Burger King Foot Lettuce</a>
+            </div>
+            <div class="d-flex flex-column">
+                <a>Burger King Foot Lettuce</a>
+            </div>
+            <div class="d-flex flex-column">
+                <a>Burger King Foot Lettuce</a>
+            </div>
+            <div class="d-flex flex-column">
+                <a>Burger King Foot Lettuce</a>
+            </div>
+        </div>
+        
+        <button id="plusBtn" type="button" class="ShikenBtn ImgBtn"></button>
+    </div>    
+</div>
+
+
+  <!-- Modals -->
+  <div class="modal fade" id="AnswerModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="row justify-content-center">
+            <h5 class="modal-title">Write the answer!</h5>
+          </div>
+        </div>
+            <div class="modal-body">
+            <div class="col-sm justify-content-center">
+              <div class="row justify-content-center" style="padding-bottom:30px;">
+                <input type="text" name="" id="AnswerInput" class="form-control" placeholder="Insert an Answer" required>
+                <div style="padding:15px;" class="row justify-content-between" id="monasChinas">
+                    <label for="ansCheckbox"><h5>Is this a correct answer?</h5></label>
+                    <input type="checkbox" class="AnsCheckbox" name="isAnswer" value="isAnswer" id="ansCheckbox">
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <button id="saveBtn" type="submit" class="ShikenBtn" >Save</button>
+
+              </div>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+
+  <div class="modal fade" id="OptionsModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <input id="gameName" value="My Game" maxlength="35"></input>
+        </div>
+          <div class="modal-body">
+            <div class="col-sm justify-content-center">
+              
+              <div class="row">
+                <div class="col justify-content-between">
+                  <div class = "row justify-content-between ItemDiv">
+                    <input class="Item" type ="checkbox" name = "itemInk" value="ItemInk">
+                    <p>Inky Screen</p>
+                  </div>
+                  <div class = "row justify-content-between ItemDiv">
+                    <input class="Item" type ="checkbox" name = "itemSleep" value="ItemSleep">
+                    <p>Sleeping Chicks</p>
+                  </div>
+                  <div class = "row justify-content-between ItemDiv">
+                    <input class="Item" type ="checkbox" name = "itemReverse" value="ItemReverse">
+                    <p>Reverse Ideology</p>
+                  </div>
+                  <div class = "row justify-content-between ItemDiv">
+                    <input class="Item" type ="checkbox" name = "itemShuffle" value="ItemShuffle">
+                    <p>Shuffle Answers</p>
+                  </div>
+                  <div class = "row justify-content-between ItemDiv">
+                    <input type ="checkbox" name = "itemNightmare" value="ItemNightmare">
+                    <p>Nightmares</p>
+                  </div>
+                </div>
+                <div class="col justify-content-between">
+                  <img src="https://img2.gelbooru.com/images/75/fc/75fc771c9c1815567289dc9fb10c0077.png" width="100%" height="80%" class="ShikenImg">
+                  <div class="row justify-content-around">
+                    <button id="finalSave" style="width:75%;" class="ShikenBtn">Save and exit editor</button>                  
+                  </div>
+                </div>
+              </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5>URL de Imagen</h5>
+      </div>
+        <div id="ImageModalDiv" class="modal-body col justify-content-center">
+          <input id="UrlIn" style="width: 100%;" type="text">
+          <div style="padding: 15px;" class="row justify-content-center">
+              <button id="ImageUrlSet" class="ShikenBtn">Set</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="TestEdit.js"></script>
+
+<!--Bootstrap 4-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,8 +1,10 @@
+
+
 #wrapper{
     border-width: 5px;
     min-height:100%;
     max-height: 100%;
-    background-color: #fff;
+    background-color: rgb(221, 248, 237);
     position: absolute;
 }
 
@@ -13,6 +15,21 @@
     font-weight: bold;
 }
 
+.ShikenBtn{
+    border-style: solid;
+    border-color: rgb(33, 70, 66);
+    border-radius: 3px;
+    background-color: rgb(221, 248, 237);
+    border-radius: 15px;
+    font-weight: bold;
+    color: rgb(33, 70, 66);
+    height: 100%;
+    width: 40%;
+}
+
+.Selected{
+    background-color: #F6A65C;
+}
 
 #Answers div{
     background-color: rgb(204, 232, 213);
@@ -29,18 +46,20 @@
        
 }
 
-#Answers div{
+#Answers button{
     align-items: center;
-    width:280px;
+    width: 280px;
+    height: 80px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(78, 114, 116);
+    background-color: rgb(204, 232, 213);
 }
 
-#cogBtn{
-    /* background-color: rgb(245, 153, 68); */
-    background-image: url("cog.png");
-    background-repeat: no-repeat;
-    background-size: 60%;
-    background-position: center;
+#Answers button:active{
+    background-color: #F6A65C;
 }
+
 
 .txt{
     width:100%;
@@ -82,14 +101,6 @@ button img{
     border-bottom-right-radius: 15px;   
 }
 
-#clkBtn{
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-color: rgb(78, 114, 116);
-    border-width: 3px;
-    width:80px;
-}
-
 #Nav input{
     text-align:center;
     border-color: rgb(78, 114, 116);
@@ -98,38 +109,32 @@ button img{
 }
 
 #clk{
-    width:80px;
+    width:120px;
+    height: 50px;
     border-style:solid;
     border-width: 3px;
     border-color: rgb(78, 114, 116);
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;  
+    border-radius: 15px;
+    
 }
 
 #Question{
     flex-direction: row;
     position:relative;
-    background-color: rgb(221, 227, 229);
-    border-radius: 20px;
-    width: 80%;
+    background-color: rgb(204, 232, 213);
+    border-radius: 5px;
+    width: 90%;
     text-align: center;
-    margin: 30px auto;
+    margin: auto;
     justify-content: space-between;
     align-items: center;
 }
 
 #Nav, #Footer{
+    background-color: #009688;
     align-items: center;
     padding: 1rem;
     justify-content: space-between;
-}
-
-#Nav {
-    background-color: #1abc9c;
-}
-
-#Footer {
-    background-color: rgb(84, 89, 94);
 }
 
 #Footer button{
@@ -143,7 +148,6 @@ button img{
     margin:20px;
     border-radius: 20px;
 }
-
 #QText{
     border-width: 3px;
     border-color: rgb(78, 114, 116);

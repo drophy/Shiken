@@ -1,0 +1,301 @@
+#wrapper{
+    border-width: 5px;
+    min-height:100%;
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+}
+
+.txt{
+    width:100%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(78, 114, 116);
+}
+
+button img{
+    height:25px;
+    width: 25px;
+}
+
+#navDiv input{
+    background-color: white;
+    text-align: center;
+    border-color: rgb(78, 114, 116);
+    border-width: 3px;
+    width:80px;
+}
+
+#Nav input{
+    text-align:center;
+    border-color: rgb(78, 114, 116);
+    border-width: 3px;
+    border-style: solid;
+}
+
+#clk{
+    width:80px;
+    border-style:solid;
+    border-width: 3px;
+    border-color: rgb(78, 114, 116);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;  
+}
+
+#Question{
+    flex-direction: row;
+    position:relative;
+    background-color: rgb(221, 227, 229);
+    border-radius: 20px;
+    width: 80%;
+    text-align: center;
+    margin: 30px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#Nav, #Footer{
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+#Nav {
+    background-color: #1abc9c;
+}
+
+#Footer {
+    background-color: rgb(84, 89, 94);
+}
+
+#QImg{
+    align-self: center;
+    max-width: 50%;
+    max-height:50%;
+    width: 50%;
+    margin:20px;
+    border-radius: 20px;
+}
+
+#QImg:hover{
+    border-style: dotted;
+    border-color: black;
+}
+
+#QText{
+    border-width: 3px;
+    border-color: rgb(78, 114, 116);
+    font-weight: bold;
+    font-size: 2em;
+    border-radius: 25px;
+    padding: 10px 10px;
+    margin: 10px;
+    text-align: center;
+    width:100%;
+}
+
+#QContainer{
+    width:50%;
+}
+
+/* Buttons */
+
+.ShikenBtn{
+    border-style: solid;
+    border-color: rgb(33, 70, 66);
+    border-radius: 3px;
+    background-color: rgb(221, 248, 237);
+    border-radius: 15px;
+    font-weight: bold;
+    color: rgb(33, 70, 66);
+    height: 100%;
+    width: 40%;
+}
+
+#reactiveManager{
+    width: 30%;
+}
+
+#addReactive{
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px; 
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px; 
+}
+
+#deleteReactive{
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px; 
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px; 
+}
+
+.ImgBtn{
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+
+.ShikenBtn:hover{
+    transform: translate(0px, 1px);
+    -webkit-transform: translate(0px, 1px);
+    background-color: rgb(150, 227, 205);
+    transform: scale(1.05) perspective(10px);
+    transition: all .1s ease-in-out;  
+}
+
+#leftArrow{
+    background-image: url("lArrow.png");
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width:50px;
+    height: 50px;   
+}
+
+#rightArrow{
+    background-image: url("rArrow.png");
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;   
+    width:50px;
+    height: 50px;
+}
+
+#cogBtn:hover{
+    box-shadow: 0px 0px 30px 15px #F6A65C;
+}
+
+#cogBtn{
+    background-color: #F6A65C;
+    background-image: url("cog.png");
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#clkBtn{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-width: 3px;
+    width: 80px;
+}
+
+#minusBtn{
+    width:60px;
+    height: 60px;
+    background-image: url("minus.png");
+}
+
+#plusBtn{
+    width:60px;
+    height: 60px;
+    background-image: url("plus.png");
+}
+
+/* Answers */
+
+#Answers div{
+    background-color: rgb(204, 232, 213);
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    min-width:25%;
+    max-width: 45%;
+    font-weight: bold;
+}
+
+#Answers div:hover{
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    background-color: rgb(150, 227, 205);
+    transform: scale(1.1) perspective(10px);
+    transition: all .1s ease-in-out;    
+}
+
+.isCorrect{
+    background-color: #F6A65C;
+}
+
+/* Modal */
+
+#gameName{
+    width:90%;
+    font-weight: bold;
+    border-radius: 25px;
+    text-align: center;
+}
+
+input{
+    text-align: center;
+}
+
+.modal-header{
+    background-color: rgb(28, 48, 48);
+    justify-content: center;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.modal-content{
+background-color: transparent;
+border-color: transparent;
+}
+
+.modal-header h5{
+    color: rgb(204, 232, 213);
+    font-weight: bolder;
+}
+
+.modal-body{
+    background-color: rgb(204, 232, 213);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.ItemDiv{
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.ItemDiv:nth-child(odd){
+    background-color: rgb(150, 227, 205);
+}
+
+.ItemDiv:nth-child(even){
+    background-color: rgb(204, 232, 213);
+}
+
+.ItemDiv input{
+    height:20px;
+}
+
+.ShikenImg{
+    border-radius: 25px;
+}
+
+.AnsCheckbox{
+    height: 50px;
+    width: 50px;
+    /*margin-top: 30px;
+    margin-bottom: 30px;
+    */
+}
+
+#monasChinas{
+    height: 40px;
+    display: flex;
+    align-items: center
+}
+
+/* Extra */
+.isCorrect{
+    background-color: #F6A65C !important;
+}

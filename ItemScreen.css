@@ -1,0 +1,190 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#Wrapper{
+    width:100%;
+    height:100%;
+    animation: colorchange 5s; /* animation-name followed by duration in seconds*/
+    /* you could also use milliseconds (ms) or something like 2.5s */
+    -webkit-animation: colorchange 5s; /* Chrome and Safari */
+    -webkit-animation-name: colorchange;
+	animation-name: colorchange;
+	-webkit-animation-duration: 5s;
+	animation-duration: 5s;
+	-webkit-animation-direction: alternate;
+	animation-direction: alternate;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+
+
+}
+
+@keyframes colorchange
+{
+  0%   {background: rgb(28, 48, 48);}
+  25%  {background: rgb(78, 114, 116);}
+  50%  {background: rgb(33, 70, 66);}
+  75%  {background: rgb(150, 227, 205);}
+  100% {background: rgb(28, 48, 48);}
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+      {
+        0%   {background: rgb(28, 48, 48);}
+        25%  {background: rgb(78, 114, 116);}
+        50%  {background: rgb(33, 70, 66);}
+        75%  {background: rgb(150, 227, 205);}
+        100% {background: rgb(28, 48, 48);}
+      }
+
+#Main{
+    width: 90%;
+    height: 90%;
+    background-color: rgb(204, 232, 213);
+    border-radius: 25px;
+}
+
+#Main>div{
+    height: 45%;
+    width:95%;
+    max-width: 95%;
+    border-radius: 25px;
+}
+
+.ShikenBtn{
+    border-style: solid;
+    border-color: rgb(33, 70, 66);
+    background-color: rgb(221, 248, 237);
+    border-radius: 50px;
+    font-weight: bold;
+    color: rgb(33, 70, 66);
+    height: 70%;
+    width: 15%;
+}
+
+.ShikenBtn:hover{
+    transform: translate(0px, 1px);
+    -webkit-transform: translate(0px, 1px);
+    background-color: rgb(150, 227, 205);
+    transform: scale(1.05) perspective(10px);
+    transition: all .1s ease-in-out;  
+}
+
+h5{
+    font-weight: bold;
+    justify-self: center;
+}
+
+#AvailableItems, #DebuffList{
+    height: 80%;
+    max-height: 100%;
+    background-color: rgb(78, 114, 116);
+}
+
+#ItemHeader, #DebuffSign{
+    background-color: rgb(33, 70, 66);
+    color: rgb(204, 232, 213);
+    border-radius: 25px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    justify-content: center;
+    width: 100%;
+    margin:0;
+}
+
+#AvailableItems, #DebuffList{
+    border-style: groove;
+    border-width: 3px;
+    border-color: rgb(33, 70, 66);
+    height:85%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+#AvailableItems .ShikenBtn{
+    width: 20%;
+    height: 70%;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-image: url("eggCrack.png");
+}
+
+#DebuffList .ShikenBtn{
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    background-image: url("eggCrack.png");
+}
+
+#Target{
+    border-style: groove;
+    border-width: 5px;
+    border-color: rgb(33, 70, 66);
+    background-color: #F6A65C;
+    height: 90%;
+    width: 25%;
+    border-radius: 25px;
+}
+
+#Target>div{
+    width: 100%;
+}
+
+h5{
+    font-size: 2vw;
+}
+
+.ShikenBtn:focus{
+    transform: translate(0px, 1px);
+    -webkit-transform: translate(0px, 1px);
+    background-color: #F6A65C;
+    transform: scale(1.1) perspective(10px);
+    transition: all .1s ease-in-out;  
+}
+
+.modal-content, .modal-body{
+    background-color: rgb(78, 114, 116);
+    border-radius: 20px;
+}
+
+.modal-header{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: rgb(33, 70, 66);
+    color: rgb(150, 227, 205);
+    border-color: rgb(33, 70, 66);
+    border-style: solid;
+    border-width: 5px;
+}
+
+.userDiv{
+    border-color: black;
+    border-style: dotted;
+    border-width: 1;
+    border-radius: 10px;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: rgb(150, 227, 205);
+    font-weight: bold;
+    margin-top:5px;
+}
+
+.userDiv:hover{
+    transform: translate(0px, 1px);
+    -webkit-transform: translate(0px, 1px);
+    background-color: #F6A65C;
+    transform: scale(1.1) perspective(10px);
+    transition: all .1s ease-in-out;  
+}
+
+#userList{
+    width: 100%;
+    height: 100%;
+}
+
+/*@media only screen and (min-width: 700px) {
+
+  }*/
