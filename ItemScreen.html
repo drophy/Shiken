@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="ItemScreen.css">
+</head>
+<body>
+
+    <div id="Wrapper" class="d-flex flex-wrap align-content-center justify-content-center">
+        <div id="Main" class="d-flex flex-column align-content-around align-items-center justify-content-around">
+            <div id="StatusContainer" class="d-flex flex-row align-content-center align-items-center justify-content-around">
+                <div id="ItemContainer" style="height:100%; width:70%;">
+                    <div id="ItemHeader" class="row justify-content-center">
+                        <h3>Available Items:</h3>                        
+                    </div>
+                    <div id="AvailableItems" class="d-flex justify-content-around flex-wrap align-content-center">
+                        <button id="HenBtn" class="ShikenBtn" data-toggle="modal" data-target="#VictimModal"></button>
+                        <button id="SleepBtn" class="ShikenBtn" data-toggle="modal" data-target="#VictimModal"></button>
+                        <button id="EggBtn" class="ShikenBtn" data-toggle="modal" data-target="#VictimModal"></button>
+                        <button id="FlipBtn" class="ShikenBtn" data-toggle="modal" data-target="#VictimModal"></button>
+                        <button id="GuardBtn" class="ShikenBtn"></button>
+                    </div>
+                </div>
+                <div id="Target" style="padding-left: 15px;" class="d-flex flex-column justify-content-around align-content-center">
+                    <div>
+                        <h5>Using:</h5>
+                        <h5>Last Occultism</h5>
+                    </div>
+                    <div>
+                        <h5>Targeting:</h5>
+                        <h5>Unknown X</h5>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="DebuffDiv">
+                <div id="DebuffSign" class="row justify-content-center">
+                    <h3>You will get hit by these!</h3>
+                </div>
+                <div id="DebuffList" class="overflow-auto d-flex justify-content-around flex-grow-1 flex-wrap align-content-center">
+                    <button id="HenDbf" class="ShikenBtn"></button>
+                    <button id="SleepDbf" class="ShikenBtn"></button>
+                    <button id="EggDbf" class="ShikenBtn"></button>
+                    <button id="FlipDbf" class="ShikenBtn"></button>
+                </div>
+            </div>
+            </div>
+
+    </div>
+
+    <div class="modal fade" id="VictimModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                <h5>Choose your Target!</h5>
+              </div>
+                <div id="ModalBody" class="modal-body col justify-content-center">
+                  <div id="userList" class="d-flex flex-wrap align-content-start">
+                      <div id="a">
+                        <h5>User X / 9999 points</h5>                
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+    <script src="ItemScreen.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
