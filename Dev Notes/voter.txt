@@ -1,0 +1,5 @@
+TODO
+- hide answer so players can't see it by inspecting the page
+
+IDEAS
+- really consider adding a progress bar for the time!

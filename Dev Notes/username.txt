@@ -1,4 +1,8 @@
 TODO
+- Go to next page when host starts game (time out for now, I guess)
+- We'll use the game's temporal code to get the game's ID and then we can get the game's data
+- Right now there could definitely be concurrency issues that allow users to have repeated names
+- Make sure someone added a players [] field in the game
 - Replace image for actual Shiken mascot
 
 IDEAS

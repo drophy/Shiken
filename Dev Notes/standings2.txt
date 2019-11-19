@@ -1,2 +1,7 @@
 TODO
-- manage really long names
+- Change way users are stored (players won't be an array, but an object with usernames being keys and their points being the values)
+- Update hostGame.html to proper name and uncomment
+- Users should be added as they are created
+- Add a button at the bottom, depending on the state. If it's, say, state 0 it should say "start" meaning all users are in and they're ready. If the state is 2, it should say Done and take you back to the host dashboard. If the state is 1, no button is required. You could show how much time is left before the next question is displayed. Maybe you could use the question index instead, not sure (you can save that one in local storage, probs btw)
+- Limpiar los players al final para que no aparezcan cuando se vuelva a usar el quiz
+- Manage really long names (so the points will still show)

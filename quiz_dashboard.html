@@ -213,6 +213,8 @@
   </script>
 
   <script>
+    console.log(JSON.parse(localStorage.objPasswords)); // DBUG
+    
     document.querySelectorAll('select').forEach((dropdown) => {
       dropdown.addEventListener("change", function() {
         if(event.target.value === "start") location.href='standings2.html';

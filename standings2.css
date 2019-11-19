@@ -30,6 +30,8 @@
    border-radius: 5px;
 
    display: flex;
+   flex-direction: column;
+   align-items: center;
    justify-content: center;
 
    font-family: 'Karla', sans-serif;
@@ -39,7 +41,7 @@
    box-sizing: border-box;
    width: 80%;
    max-width: 500px;
-   height: 90%;
+   height: 85%;
    border-radius: 10px;
 
    padding: 15px;
@@ -48,13 +50,27 @@
 
    display: flex;
    flex-direction: column;
+
+   overflow: auto;
+}
+
+#card-container::-webkit-scrollbar {
+   width: 10px;
+   background-color: white;
+   border-radius: 10px;
+}
+
+#card-container::-webkit-scrollbar-thumb {
+   background-color: rgb(246, 166, 92);
+   border-radius: 10px;
 }
 
 .card {
    box-sizing: border-box;
    width: 100%;
-   border-radius: 10px;;
+   border-radius: 10px;
    height: 50px;
+   min-height: 35px;
    margin-bottom: 5px;
    padding: 10px;
 
@@ -69,4 +85,30 @@
 .card span {
    background-color: inherit;
    color: white;
+}
+
+#bottom-container {
+   width: 80%;
+   max-width: 500px;
+   height: 15%;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#bottom-container button {
+   border: none;
+   outline: none;
+
+   padding: 10px 40px;
+   border-radius: 10px;
+   background-color: rgb(9, 208, 121);
+   
+   color: #FFF;
+   font-size: 2em;
+}
+
+#bottom-container button:hover {
+   background-color: rgb(8, 184, 107);
 }

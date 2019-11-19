@@ -1,0 +1,72 @@
+/*
+   FONTS   
+   font-family: 'Rubik', sans-serif;
+   font-family: 'Karla', sans-serif;
+*/
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+main {
+   height: 100vh;
+
+   padding: 5vh 5vw;
+
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(3, 1fr);
+   column-gap: 5vw;
+   row-gap: 5vh;
+
+   grid-template-areas: 
+   "A B" 
+   "C D" 
+   "info info";
+}
+
+.answer {
+   border-radius: 10px;
+
+   font-family: 'Rubik', sans-serif;
+   font-size: 10vw;
+   color: #ffffff;
+   text-shadow: #000000 0px 0px 10px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#answer-A {
+   /* background-color: rgb(248, 19, 9); */
+   background-color: rgb(232, 0, 0);
+
+   grid-area: A;
+}
+
+#answer-B {
+   background-color: rgb(18, 192, 24);
+
+   grid-area: B;
+}
+
+#answer-C {
+   background-color: rgb(0, 150, 250);
+
+   grid-area: C;
+}
+
+#answer-D {
+   background-color: rgb(255, 242, 0);
+
+   grid-area: D;
+}
+
+#info {
+   background-color: rgb(221, 227, 229);
+
+   grid-area: info;
+}

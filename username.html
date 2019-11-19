@@ -24,9 +24,14 @@
       <!-- Form -->
       <form action="">
          <!-- https://stackoverflow.com/questions/9707021/how-do-i-auto-hide-placeholder-text-upon-focus-using-css-or-jquery -->
-         <input type="text" maxlength="25" placeholder="username" onfocus="this.placeholder=''"
-         onblur="this.placeholder = 'username'" spellcheck="false">
-         <button type="button">Done!</button>
+         <div class="flex-h">
+            <input type="text" maxlength="25" placeholder="username" onfocus="this.placeholder=''"
+            onblur="this.placeholder = 'username'" spellcheck="false">
+            <button type="button">Done!</button>
+         </div>
+         <div class="flex-h">
+            <p style="visibility:hidden">Sorry! There's already someone in this game using this username.</p>
+         </div>
       </form>
 
       <!-- Quote -->

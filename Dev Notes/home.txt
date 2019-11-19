@@ -1,11 +1,12 @@
 // TO DO
-- Try to make it look ok on phone (the logo could be an image and maybe the credits be shorter)
+- Try to make it look ok on phone (the logo could be an image and maybe the credits be shorter). WAIT, use the transform scale property so the svg is the right size (I hope!)
 - Try to style Google Sign in button (see guideliness in link in video at https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin but I'd like to maybe make it longer and maybe remove the glow so it's uniform)
 - Make a logo to use instead of 'Shiken'
 - Change Play! button on hover
 - Use @media to pick which background image to load
-- Play around with adding a Zelda gif or something
 - Give it a little tab icon!
+- New Logo
+- Play around with adding a Zelda gif or something
 
 // IDEAS
 - In the "enter your username" page, have a random name creator

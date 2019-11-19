@@ -18,6 +18,10 @@ body {
    background-position: 50% 0%;
 }
 
+.disabled-button {
+   opacity: 50%;
+}
+
 /*Code Input*/
 #code-input {
    height: 55px;
@@ -65,8 +69,13 @@ body {
 
 /* Middle Stuff */
 #content {
-   padding-top: 20%;
+   margin: 20% auto;
+   width: 60%;
    text-align: center;
+
+   color: white;
+   
+   text-shadow: #000 0px 0px 5px;
 }
 
 /* Navbar stuff */
@@ -261,6 +270,7 @@ body {
    cursor: pointer;
 }
 
+/* Sign up / Log in button*/
 .modal2 button {
    height: 40px;
 

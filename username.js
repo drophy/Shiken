@@ -1,5 +1,16 @@
 console.log("username.js connected");
 
+/// DATA BASE ///
+function getDB() {
+   objGames = localStorage.objGames? JSON.parse(localStorage.objGames) : {};
+}
+
+function updateDB() {
+   localStorage.objGames = JSON.stringify(objGames);
+}
+
+let objGames;
+
 /// GET RANDOM FACT ///
 const arrFacts = [
    `Shiken (しけん or 試験) means 'test' in Japanese.`,
@@ -25,15 +36,35 @@ async function getUselessFact() {
 getUselessFact()
    .catch((error) => getLocalFact());
 
-/// DISABLE ON CLICK ///
+/// ENTER USERNAME ///
 document.querySelector("button").addEventListener("click", (event) => {
-   // document.querySelector("input[type='text']").disabled = "disabled";
-   document.querySelector("input[type='text']").setAttribute('readonly', '');
-   console.log(event.target.disabled = true);
+   let htmlInput = document.querySelector("input[type='text']")
+   let desiredUsername = htmlInput.value;
+   
+   // Validate it's an unique username
+   getDB();
+   objGames[localStorage.code].players.forEach((objPlayer) => {
+      if(objPlayer.username == desiredUsername) {
+         // Let user know the username is taken
+         document.querySelector('form p').style.visibility = 'visible';
+         return;
+      }
+   });
+
+   // Save it to the DB
+   objGames[localStorage.code].players.push({username: desiredUsername, points: 0});
+   updateDB();
+
+   // Save locally so we can assign points to them
+   localStorage.username = desiredUsername;
+
+   // Disable input and button
+   htmlInput.setAttribute('readonly', '');
+   event.target.disabled = true;
 });
 
 
 /// START GAME (temp) ///
-setTimeout(function() {
-   location.href='game.html';
-}, 10000);
+// setTimeout(function() {
+//    location.href='game.html';
+// }, 10000);
