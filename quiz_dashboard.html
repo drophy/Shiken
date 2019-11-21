@@ -56,8 +56,10 @@
     position: relative;
   }
 
-  #optionsDiv select, #optionsDiv input {
-    height: 38px; /* same as form */
+  #optionsDiv select,
+  #optionsDiv input {
+    height: 38px;
+    /* same as form */
 
     border-radius: 5px;
     border: 1px solid rgb(221, 227, 229);
@@ -101,7 +103,8 @@
     <div class="dropdown pmd-dropdown pmd-user-info ml-auto" id="user">
       <buttom class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true"
         aria-expanded="false">
-        <img class="mr-2" src="https://i.pinimg.com/originals/96/3e/41/963e4175d6dfff373be81144c3272b25.jpg"    width="40" height="40" alt="avatar">
+        <img class="mr-2" src="https://i.pinimg.com/originals/96/3e/41/963e4175d6dfff373be81144c3272b25.jpg" width="40"
+          height="40" alt="avatar">
         <i class="fa fa-caret-down"></i>
         <div class="media-body">
           User
@@ -119,49 +122,53 @@
   <div id="optionsDiv">
     <form class="form-inline my-2 my-lg-0">
       <!-- Search -->
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      <!-- Order by -->
+      <input class="form-control mr-sm-2" id="buscar" type="text" placeholder="Search.." onkeyup="searh()"  aria-label="Search">
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0"id="buscar1" type="submit" onclick="searchLolis()">Search</button> -->
+      <!-- Order by.-->
       <label for="order-criteria">Order by</label>
-      <select name="order-criteria">
-        <option value="date">Date created</option>
-        <option value="alphabetical ">Alphabetical</option>
+      <select name="order-criteria" id="sortSelect" onChange="sortBy()">
+        <option selected ></option>
+        <option value="0" >Date created</option>
+        <option value="1" >Alphabetical</option>
       </select>
     </form>
-    <button id="new" onclick="location.href='editor.html'">
+    <button type="button" class="btn btn-primary" id="new"  data-toggle="modal" data-target="exampleModal">
+      <!-- "location.href='editor.html'" data-type="date" data-format-string="Do MMMM YYYY"  ;location.href='editor.html';  onChange="deleteFunction(this.rowIndex)"-->
       + New Quiz
     </button>
   </div>
 
   <div id="tableDiv">
-    <table width="100%">
+    <table width="100%" id="QuizTable" >
+        <tr>
+          <th style="width:200px">Quiz</th>
+          <th >Date</th>
+          <th>Description</th>
+        </tr>
       <tr>
-        <th style="width:200px">Quiz</th>
-        <th>Date</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>La ecuacion de dirac <br>
-          <select name="menu">
+        <td>feynman path integral<br>
+          <select name="menu" id="feynman" onChange="deleteFunction(this,value)">
             <option value="default" selected>Quiz options</option>
             <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
-            <option value="erase">Delete</option>
+            <option value="erase" >Delete</option>
           </select>
         </td>
         <td>13/02/2013</td>
-        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
-          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
-          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
-          cuatro componentes</td>
+        <td>En este quiz se hara una serie de preguntas sobre la es un enfoque en el que las relaciones 
+          fundamentales de esta teoría se derivan utilizando la noción de suma sobre historias, publicada por Richard Feynman en 1948.1
+          ​ Se trata de una formulación no relativística y
+           equivalente a la ecuación de Schrödinger y a la mecánica matricial 
+           de Heisenberg, y que permite abordar algunos problemas de forma más simple.
+          </td>
       </tr>
       <tr>
-        <td>La ecuacion de dirac 2<br>
-          <select name="menu">
+        <td>ecuacion de dirac<br>
+          <select name="menu" onChange="deleteFunction(this,value)">
             <option value="default" selected>Quiz options</option>
             <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
-            <option value="erase">Delete</option>
+            <option value="erase" >Delete</option>
           </select>
         </td>
         <td>15/02/2013</td>
@@ -171,12 +178,12 @@
           cuatro componentes </td>
       </tr>
       <tr>
-        <td>La ecuacion de dirac 3 <br>
-          <select name="menu">
+        <td>Metodos perturbativos<br>
+          <select name="menu" onChange="deleteFunction(this,value)" >
             <option value="default" selected>Quiz options</option>
             <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
-            <option value="erase">Delete</option>
+            <option value="erase" >Delete</option>
           </select>
         </td>
         <td>16/02/2013</td>
@@ -186,19 +193,18 @@
           cuatro componentes </td>
       </tr>
       <tr>
-        <td>La ecuacion de dirac 4<br>
-          <select name="menu">
+        <td>Teoria de cuerdas<br>
+          <select name="menu" onChange="deleteFunction(this,value)">
             <option value="default" selected>Quiz options</option>
             <option value="start">Start quiz</option>
             <option value="edit">Edit</option>
             <option value="erase">Delete</option>
           </select>
         </td>
-        <td>19/02/2013</td>
-        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
-          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
-          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
-          cuatro componentes </td>
+        <td id="Date"></td>
+        <td>En este quiz se hara una serie de preguntas sobre la teoria de cuerdas es una hipótesis científica y modelo fundamental de
+           física teórica que asume que las partículas subatómicas, aparentemente puntuales,
+           son en realidad «estados vibracionales» de un objeto extendido más básico llamado «cuerda» o «filamento».</td>
       </tr>
     </table>
   </div>
@@ -211,16 +217,61 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+  <script src="quiz_dashboard.js"></script>
 
   <script>
-    console.log(JSON.parse(localStorage.objPasswords)); // DBUG
-    
-    document.querySelectorAll('select').forEach((dropdown) => {
-      dropdown.addEventListener("change", function() {
-        if(event.target.value === "start") location.href='standings2.html';
-      });
-    });
+    // document.querySelectorAll('select').forEach((dropdown) => {
+    //   dropdown.addEventListener("change", function () {
+    //     if (event.target.value === "start") location.href = 'standings2.html';
+    //   });
+    // });
+
+
+    // document.querySelectorAll('select').forEach((dropdown) => {
+    //   dropdown.addEventListener("change", function () {
+    //     if (event.target.value === "edit") location.href = 'edit.html';
+    //   });
+    // });
+    $('#new').click(function() {
+   $('#exampleModal').modal('show');
+});
+
+  function f(){  //coregir esta funcion , no esta tomando el nput del usuario
+    let x=document.querySelector("#descQuiz").textContent;
+    //alert(document.getElementById("hola").textContent);
+    let y=document.querySelector("#quizName1").textContent;
+    //alert(document.getElementById("quizName1").textContent);
+    newQuiz(x.value,y.value);
+  }
   </script>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New quiz</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label" id="hola">Quiz name:</label>
+              <input type="text" class="form-control" id="quizName1">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="descQuiz"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="creaQuizBTN" onclick="f()">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
