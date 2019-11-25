@@ -45,7 +45,7 @@ function deleteFunction(index, value) {
     if (value == "erase")
         document.getElementById("QuizTable").deleteRow(i);
     if(value=="edit")
-        location.href='editor.html'
+        location.href='TestEdit.html'
         //alert("hola");
     if(value=="start")
         location.href = 'standings2.html'
