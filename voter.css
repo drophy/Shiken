@@ -10,6 +10,10 @@
    box-sizing: border-box;
 }
 
+html, body{
+   overflow: hidden;
+}
+
 main {
    height: 100vh;
 
@@ -69,4 +73,29 @@ main {
    background-color: rgb(221, 227, 229);
 
    grid-area: info;
+}
+
+#ItemHen{
+   height: 110vh;
+   width: 110vw;
+   position: absolute;
+   -webkit-user-select:none; 
+   -webkit-touch-callout:none; 
+   -moz-user-select:none; 
+   -ms-user-select:none; 
+   user-select:none;    
+}
+
+#ItemHen:focus{
+   outline: none;
+}
+
+.SleepingChick{
+   position: fixed;
+}
+
+#egg{
+   height: 100vh;
+   width: 50vw;
+   position: fixed;
 }
