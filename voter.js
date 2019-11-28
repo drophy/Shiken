@@ -198,3 +198,26 @@ function finish() {
    // Go to powers screen
    location.href='ItemScreen.html';
 }
+
+/// CHICKEN ANIM TEST ///
+let htmlTestChicken = document.querySelector('#test-chicken');
+// let degrees = 0;
+// let radians;
+
+// setInterval(() => {
+//    degrees = (degrees+5)%360;
+//    radians = degrees*2*Math.PI/360;
+
+//    htmlTestChicken.style.transform = `scale(${1+0.05*Math.sin(radians)}, ${1-0.025*Math.sin(radians)})`;
+// }, 42); // aprox 1000/24 to aproach 24 fps
+
+htmlTestChicken.addEventListener('click', function(event) {
+   this.src = 'images/Items/StartledChick.png';
+   this.style.animationName = "wakeUp";
+   this.style.animationDuration = "0.2s";
+   this.style.transitionDuration = "0.2s";
+   this.style.animationIterationCount = "1";
+   setTimeout(() => {
+      this.remove();
+   }, 200);
+});

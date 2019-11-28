@@ -99,3 +99,70 @@ main {
    width: 50vw;
    position: fixed;
 }
+
+#test-chicken {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+
+   /*https://stackoverflow.com/questions/22333747/shrink-and-grow-an-element-using-css3*/
+   -webkit-transition-property: -webkit-transform;
+   -webkit-transition-duration: 1s;
+   -webkit-animation-name: sleep;
+   -webkit-animation-duration: 2s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+
+   -moz-transition-property: -moz-transform;
+   -moz-transition-duration: 1s;
+   -moz-animation-name: sleep;
+   -moz-animation-duration: 2s;
+   -moz-animation-iteration-count: infinite;
+   -moz-animation-timing-function: linear;
+   
+   transition-property: -moz-transform;
+   transition-duration: 1s;
+   animation-name: sleep;
+   animation-duration: 2s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+}
+
+@keyframes sleep {
+   0% {
+      transform:scale(1);
+   }
+   25% {
+      transform:scale(1.03, 0.99);
+   }
+   50% {
+      transform:scale(1);
+   }
+   75% {
+      transform:scale(0.97, 1.01);
+   }
+   100% {
+       transform:scale(1);
+   }
+}
+
+/* @keyframes wakeUp {
+   0% {
+      transform: scaleY(1);
+   }
+   100% {
+      transform: scaleY(1.5);
+   }
+} */
+
+@keyframes wakeUp {
+   0% {
+      transform: scaleY(1);
+   }
+   10% {
+      transform: scaleY(1.5);
+   }
+   100% {
+      transform: scaleY(1);
+   }
+}
