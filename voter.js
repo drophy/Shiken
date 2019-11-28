@@ -32,8 +32,6 @@ let totalTime = 10;
 
 let container = document.getElementById("ItemDiv");
 let activeItems = [false, false, false, false];
-let Hen = document.getElementById("ItemHen");
-let HenPos = -window.innerHeight -5;
 let chicks = [];
 let lastChick = 0;
 
@@ -71,12 +69,6 @@ function pickAnswer(event) {
    // console.log(points); // DBUG
 }
 
-//DUMMY
-function itemDebug(){
-
-}
-//
-
 function initItems(){
    if(activeItems[0] == true){
       initHen();
@@ -86,27 +78,35 @@ function initItems(){
    }
 }
 
+let HenTop = -window.innerHeight -5 ;
 function initHen(){
+   container.innerHTML += `
+   <img src="./images/Items/hen.png" id="Hen">
+   `;
+   let Hen = document.getElementById("Hen");
    Hen.style.left = -10 +"px";
-   Hen.style.display = "block";
-   var HenAnim = setInterval(HenFrame, 10);
+   
    Hen.addEventListener("click", function(){
-      HenPos -= 50;
+      HenTop -= 50;
   });
+   
+   var HenAnim = setInterval(HenFrame, 10);
+   
 }
 
 function HenFrame(){    
-   if(HenPos >= 0){
-      if(HenPos > 0){
-         HenPos = 0;
-         Hen.style.top = HenPos +"px";
+   let Hen = document.getElementById("Hen");
+
+   if(HenTop >= -10){
+      if(HenTop > -10){
+         HenTop = -10;
       }
-         Hen.style.transform = `rotate(0)`;
+//         Hen.style.transform = `rotate(0)`;
    }else{
-      HenPos+=1;
-      Hen.style.top = HenPos +"px";
-      Hen.style.transform = `rotate(${Math.cos(HenPos)}deg)`;    
+      HenTop++;
+//      Hen.style.transform = `rotate(${Math.cos(HenPos)}deg)`;    
    }
+   Hen.style.top = HenTop +"px";
    //console.log("increment:" +increment);
    //console.log("pos: " +HenDiv.style.left +" " +HenDiv.style.top);
 }
@@ -158,7 +158,7 @@ function wakeUpChick(i){
 
 function initEgg(){
    container.innerHTML += `
-   <img src="https://github.com/drophy/Shiken/blob/master/images/Items/Egg.png?raw=true" id="egg">
+   <img src="./images/Items/Egg.png" id="egg">
    `;
    let egg = document.getElementById("egg");
    egg.style.top = 0 +"px";
@@ -169,7 +169,7 @@ function initEgg(){
 let eggTop = 0;
 function EggFrame(){
    let egg = document.getElementById("egg");
-   if(eggTop <= window.innerHeight){
+   if(eggTop <= window.innerHeight +30){
       if(eggTop > 30) eggTop++;
       if(eggTop > 60) eggTop++;
       eggTop++;

@@ -75,19 +75,63 @@ main {
    grid-area: info;
 }
 
-#ItemHen{
+#Hen{
    height: 110vh;
    width: 110vw;
-   position: absolute;
+   position: fixed;
+   
+   /* Prevent from being selected */
    -webkit-user-select:none; 
-   -webkit-touch-callout:none; 
+   -webkit-touch-callout:none;
+
    -moz-user-select:none; 
    -ms-user-select:none; 
    user-select:none;    
+
+   -webkit-transition-property: -webkit-transform;
+   -webkit-transition-duration: 0.2s;
+   -webkit-animation-name: henAnim;
+   -webkit-animation-duration: 0.2s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+
+   -moz-transition-property: -moz-transform;
+   -moz-transition-duration: 0.2s;
+   -moz-animation-name: henAnim;
+   -moz-animation-duration: 0.2s;
+   -moz-animation-iteration-count: infinite;
+   -moz-animation-timing-function: linear;
+
+   transition-property: -moz-transform;
+   transition-duration: 0.2s;
+   animation-name: henAnim;
+   animation-duration: 0.2s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+
 }
 
-#ItemHen:focus{
+#Hen:focus{
    outline: none;
+}
+
+@keyframes henAnim{
+   0% {
+      transform:rotate(0deg);
+   }
+   25% {
+      transform:rotate(1deg);
+   }
+   50% {
+       transform:rotate(0deg);
+   }   
+   75% {
+      transform:rotate(-1deg);
+  }   
+  100%{
+     transform: rotate(0deg);
+  }
+   
 }
 
 .SleepingChick{
@@ -98,6 +142,44 @@ main {
    height: 100vh;
    width: 50vw;
    position: fixed;
+   -webkit-transition-property: -webkit-transform;
+   -webkit-transition-duration: 30s;
+   -webkit-animation-name: eggAnim;
+   -webkit-animation-duration: 28s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+
+   -moz-transition-property: -moz-transform;
+   -moz-transition-duration: 30s;
+   -moz-animation-name: eggAnim;
+   -moz-animation-duration: 28s;
+   -moz-animation-iteration-count: infinite;
+   -moz-animation-timing-function: linear;
+
+   transition-property: -moz-transform;
+   transition-duration: 30s;
+   animation-name: eggAnim;
+   animation-duration: 28s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+}
+
+@keyframes eggAnim{
+   0% {
+      transform:scaleY(1);
+   }
+   25% {
+      transform:scaleY(1.1);
+   }
+   50% {
+      transform:scaleY(1.2);
+   }
+   75% {
+      transform:scaleY(1.3);
+   }
+   100% {
+       transform:scaleY(1.4);
+   }
 }
 
 #test-chicken {
