@@ -116,7 +116,7 @@ function initChicks(){
    for(let i=0; i<3; i++){
       //Add to HTML
       container.innerHTML += `
-       <img src="https://github.com/drophy/Shiken/blob/master/images/Items/SleepingChick.png?raw=true" id="Chick${i}" class="SleepingChick">
+       <img src="./images/Items/hen.png" id="Chick${i}" class="SleepingChick">
        `;
 
       //Add to array
