@@ -38,13 +38,13 @@
             
             <div id="DebuffDiv">
                 <div id="DebuffSign" class="row justify-content-center">
-                    <h3>You will get hit by these!</h3>
+                    <h3>Active debuffs!</h3>
                 </div>
                 <div id="DebuffList" class="overflow-auto d-flex justify-content-around flex-grow-1 flex-wrap align-content-center">
-                    <button id="HenDbf" class="ShikenBtn"></button>
-                    <button id="SleepDbf" class="ShikenBtn"></button>
-                    <button id="EggDbf" class="ShikenBtn"></button>
-                    <button id="FlipDbf" class="ShikenBtn"></button>
+                    <button id="HenDbf" class="ShikenBtn debuff"></button>
+                    <button id="SleepDbf" class="ShikenBtn debuff"></button>
+                    <button id="EggDbf" class="ShikenBtn debuff"></button>
+                    <button id="FlipDbf" class="ShikenBtn debuff"></button>
                 </div>
             </div>
             </div>
@@ -58,17 +58,27 @@
                 <h5>Choose your Target!</h5>
               </div>
                 <div id="ModalBody" class="modal-body col justify-content-center">
-                  <div id="userList" class="d-flex flex-wrap align-content-start">
-                      <div id="a">
-                        <h5>User X / 9999 points</h5>                
-                      </div>
+                  <div id="userList" class="d-flex row flex-wrap justify-content-center align-content-center">
+                        <table>
+                            <tr>
+                                <td rowspan="2" class="rowImg">
+                                    <img src="images/defaultUser.png" class="userImg">
+                                </td>
+                                <td class="userName">
+                                    Player Name
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="userId">
+                                    12
+                                </td>
+                            </tr>
+                        </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
           
     <script src="ItemScreen.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

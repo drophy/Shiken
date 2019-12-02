@@ -1,11 +1,23 @@
-//Variables
-var Target = document.getElementById("Target");
-var ItemButtons = document.getElementById("AvailableItems").children;
-var UserList = document.getElementById("userList");
-var users = document.getElementsByClassName("userDiv");
+class Player{
+    constructor(n, i){
+        this.name = n;
+        this.id = i;
+    }
+}
 
-var selectedItem = undefined;
-var currentUser = undefined;
+//Variables
+let Target = document.getElementById("Target");
+let ItemButtons = document.getElementById("AvailableItems").children;
+let UserList = document.getElementById("userList");
+let users = document.getElementsByClassName("userDiv");
+
+let selectedItem = undefined;
+let currentUser = undefined;
+
+let players =[];
+let debuffs = [true, false, true, false];
+let shieldTarget = Math.round(Math.random*4);
+let useShield = false;
 
 function getItem(string){
     switch(string){
@@ -28,39 +40,94 @@ function getItem(string){
 
 for(let i=0; i<ItemButtons.length-1; i++){
     ItemButtons[i].addEventListener("click", function(){
+        
+        let s = document.querySelectorAll(".Selected");
+        if(s.length != 0){
+            for(let i=0; i<s.length; i++){
+                s[i].className = ("ShikenBtn");
+            }
+        }
+        
         selectedItem = event.target;
+        selectedItem.className = "ShikenBtn Selected";
+
         Target.children[0].children[1].textContent = getItem(selectedItem.id);
-        users = document.getElementsByClassName("userDiv");
+        
     });
 }
 
+//For the shield
+let usingGuard = false;
 ItemButtons[4].addEventListener("click", function(){
-    Target.children[0].children[1].textContent = getItem("GuardBtn");
+    
+    usingGuard = true;
+    tempString = Target.children[1].children[1].textContent;
+    
     Target.children[1].children[1].textContent = "Yourself";
+    useShield = true;
 });
 
+function initUsersListeners(){
+    for(let i=0; i<document.querySelectorAll(".userInfo").length; i++){
+        document.querySelectorAll(".userInfo")[i].addEventListener("click", function(){
+            console.log(event.target.tagName);
+            if(event.target.tagName == "IMG"){
+                selectedUser = event.target.parentNode.parentNode.parentNode.parentElement.id;
+            }
+            if(event.target.tagName == "TD"){
+                selectedUser = event.target.parentNode.parentNode.parentNode.id;
+            }
+            Target.children[1].children[1].textContent = document.getElementById(selectedUser).children[0].children[0].textContent;
+            if(document.querySelectorAll(".Usered").length != 0) document.querySelectorAll(".Usered")[0].className = "userInfo";
+            document.getElementById(selectedUser).className= ("userInfo Usered");
+            useShield = true;
+        })
+    }
+}
+
+function checkActiveDebuffs(){
+    let dbfs = document.getElementsByClassName("debuff");
+    for(let i=0; i<dbfs.length; i++){
+        if(debuffs[i] == true) dbfs[i].className = "ShikenBtn debuff";
+        else dbfs[i].className = "ShikenBtn debuff disabled";
+    }
+}
+
 function init(){
-    UserList.innerHTML = "";
+
+    //Debug purposes
     for(let i=0; i<30; i++){
+        players.push( new Player(`Alex Groot clone number ${i}`, i));
+    }
+
+    UserList.innerHTML = "";
+
+    for(let i=0; i<players.length; i++){
         UserList.innerHTML += `
-        <div id="p${i}" class="row userDiv" data-dismiss="modal">
-        <h5>User ${i} / ${i*2} points</h5>                
-        </div> 
+        <table id="p${players[i].id}" class="userInfo">
+        <tr>
+            <td rowspan="2" class="rowImg  userInfo">
+                <img src="images/defaultUser.png" class="userImg  userInfo">
+            </td>
+            <td class="userName userInfo">
+                ${players[i].name}
+            </td>
+        </tr>
+        <tr>
+            <td class="userId  userInfo">
+                ${players[i].id}
+            </td>
+        </tr>
+    </table> 
         `;
     }
-    for(let i=0; i<users.length; i++){
-        users[i].addEventListener("click", function(){
-            if(event.target.tagName == "H5"){
-                currentUser = event.target.parentNode;
-            }else currentUser = event.target;
-
-            Target.children[1].children[1].textContent = currentUser.children[0].textContent;
-        });
-    }
+    initUsersListeners();
+    checkActiveDebuffs();
 }
 
 init();
 
-setTimeout(function(){
+/*setTimeout(function(){
     location.replace("voter.html");}
     , 10_000);
+    */

@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 #Wrapper{
@@ -44,6 +45,37 @@ html, body {
     height: 90%;
     background-color: rgb(204, 232, 213);
     border-radius: 25px;
+
+    
+   -webkit-transition-property: -webkit-transform;
+   -webkit-transition-duration: 5s;
+   -webkit-animation-name: mainAnim;
+   -webkit-animation-duration: 5s;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+
+   -moz-transition-property: -moz-transform;
+   -moz-transition-duration: 5s;
+   -moz-animation-name: mainAnim;
+   -moz-animation-duration: 5s;
+   -moz-animation-iteration-count: infinite;
+   -moz-animation-timing-function: linear;
+
+   transition-property: -moz-transform;
+   transition-duration: 5s;
+   animation-name: mainAnim;
+   animation-duration: 5s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+}
+
+@keyframes mainAnim{
+    0%  {transform: rotate(0deg) scale(1.0);}
+    20%  {transform: rotate(3deg) scale(1.03);}
+    40%  {transform: rotate(1deg) scale(1.01);}
+    60%  {transform: rotate(-1deg) scale(1.03);}
+    80%  {transform: rotate(-3deg) scale(1.01);}
+    100%  {transform: rotate(0deg) scale(1.00);}
 }
 
 #Main>div{
@@ -62,6 +94,11 @@ html, body {
     color: rgb(33, 70, 66);
     height: 70%;
     width: 15%;
+    outline: none;
+}
+
+.ShikenBtn:focus{
+    outline: none;
 }
 
 .ShikenBtn:hover{
@@ -72,9 +109,11 @@ html, body {
     transition: all .1s ease-in-out;  
 }
 
-h5{
-    font-weight: bold;
-    justify-self: center;
+.disabled{
+    cursor: not-allowed;
+    pointer-events: none;
+
+    background-color:#c0c0c0;
 }
 
 #AvailableItems, #DebuffList{
@@ -116,7 +155,20 @@ h5{
     background-repeat: no-repeat;
     background-size: 80%;
     background-position: center;
-    background-image: url("eggCrack.png");
+}
+
+#HenDbf{
+    background-image: url("./images/Items/hen\ cut.png");
+}
+
+
+#EggDbf{
+    background-image: url("./images/Items/egg\ cut.png");
+}
+
+
+#SleepDbf{
+    background-image: url("./images/Items/chick\ cut.png");
 }
 
 #Target{
@@ -137,17 +189,37 @@ h5{
     font-size: 2vw;
 }
 
-.ShikenBtn:focus{
-    transform: translate(0px, 1px);
-    -webkit-transform: translate(0px, 1px);
+.Selected{
     background-color: #F6A65C;
     transform: scale(1.1) perspective(10px);
-    transition: all .1s ease-in-out;  
 }
 
 .modal-content, .modal-body{
     background-color: rgb(78, 114, 116);
     border-radius: 20px;
+    overflow:auto;
+}
+
+#userList{
+    align-items: center;
+}
+
+.userName{
+    text-align: left;
+    overflow: hidden;
+}
+
+.userImg{
+    height: 80px;
+    width: 80px;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.rowImg{
+    width: 80px;
 }
 
 .modal-header{
@@ -160,24 +232,27 @@ h5{
     border-width: 5px;
 }
 
-.userDiv{
-    border-color: black;
-    border-style: dotted;
-    border-width: 1;
-    border-radius: 10px;
-    justify-content: center;
-    flex-grow: 1;
-    background-color: rgb(150, 227, 205);
-    font-weight: bold;
-    margin-top:5px;
+table{
+    width: 90%;
+    border-radius: 5px;
+    border-width: 5px; 
+    border-style: solid;
+    border-color: rgb(28, 48, 48);
+/*    overflow: hidden;*/  
 }
 
-.userDiv:hover{
-    transform: translate(0px, 1px);
-    -webkit-transform: translate(0px, 1px);
+table:hover{
     background-color: #F6A65C;
     transform: scale(1.1) perspective(10px);
-    transition: all .1s ease-in-out;  
+}
+
+tr{
+    padding: 10px;
+    border-radius: 5px;
+    border-color: rgb(28, 48, 48);
+    border-width: 5px;
+    border-style: solid;
+    background-color: rgb(78, 114, 116);
 }
 
 #userList{
@@ -185,6 +260,17 @@ h5{
     height: 100%;
 }
 
+.Usered{
+    transform: scale(1.11) perspective(10px);
+}
+/*
+#VictimModal, .modal-body, .modal-content{
+    height: 80vh;
+    width: 80vw;
+    top: 0vh;
+    left: 0vw;
+}
+*/
 /*@media only screen and (min-width: 700px) {
 
   }*/
