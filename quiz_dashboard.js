@@ -150,3 +150,10 @@ if (mes < 10) {
 let hoy = dia + "/" + mes + "/" + year;
 document.getElementById("Date").innerHTML = hoy;
 //}:
+
+// Create new quiz
+document.querySelector('#creaQuizBTN').addEventListener('click', function() {
+    let x=document.querySelector("#quizName1").value;
+    let y=document.querySelector("#descQuiz").value;
+    newQuiz(x, y);
+});

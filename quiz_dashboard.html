@@ -217,7 +217,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-  <script src="quiz_dashboard.js"></script>
+  
 
   <script>
     // document.querySelectorAll('select').forEach((dropdown) => {
@@ -235,15 +235,8 @@
     $('#new').click(function() {
    $('#exampleModal').modal('show');
 });
-
-  function f(){  //coregir esta funcion , no esta tomando el nput del usuario
-    let x=document.querySelector("#descQuiz").textContent;
-    //alert(document.getElementById("hola").textContent);
-    let y=document.querySelector("#quizName1").textContent;
-    //alert(document.getElementById("quizName1").textContent);
-    newQuiz(x.value,y.value);
-  }
   </script>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -267,11 +260,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="creaQuizBTN" onclick="f()">Accept</button>
+          <button type="submit" class="btn btn-primary" id="creaQuizBTN">Accept</button>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="quiz_dashboard.js"></script>
 </body>
 
 </html>
