@@ -1,6 +1,5 @@
 "use strict"
 
-//Data hentai
 class Reactive{
     constructor(Question, Answers, URL, correct){
         this.Question = Question;  

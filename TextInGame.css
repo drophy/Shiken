@@ -1,34 +1,17 @@
 
+html, body {
+    margin: 0; 
+    height: 100vh; 
+    overflow: hidden
+}
 
 #wrapper{
     border-width: 5px;
-    min-height:100%;
-    max-height: 100%;
+    min-height:100vh;
+    max-height: 100vw;
+    width: 100vw;
     background-color: rgb(221, 248, 237);
     position: absolute;
-}
-
-.btn{
-    border-color: rgb(221, 248, 237);
-    background-color: rgb(221, 248, 237);
-    color: rgb(78, 114, 116);
-    font-weight: bold;
-}
-
-.ShikenBtn{
-    border-style: solid;
-    border-color: rgb(33, 70, 66);
-    border-radius: 3px;
-    background-color: rgb(221, 248, 237);
-    border-radius: 15px;
-    font-weight: bold;
-    color: rgb(33, 70, 66);
-    height: 100%;
-    width: 40%;
-}
-
-.Selected{
-    background-color: #F6A65C;
 }
 
 #Answers div{
@@ -44,16 +27,6 @@
     border-left-style: solid;
     border-right-style: solid;
        
-}
-
-#Answers button{
-    align-items: center;
-    width: 280px;
-    height: 80px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: rgb(78, 114, 116);
-    background-color: rgb(204, 232, 213);
 }
 
 #Answers button:active{
@@ -89,25 +62,6 @@ button img{
     width:80px;
 }
 
-#leftArrow{
-    background-image: url("lArrow.png");
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;   
-}
-
-#rightArrow{
-    background-image: url("rArrow.png");
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;   
-}
-
-#Nav input{
-    text-align:center;
-    border-color: rgb(78, 114, 116);
-    border-width: 3px;
-    border-style: solid;
-}
-
 #clk{
     width:120px;
     height: 50px;
@@ -116,6 +70,13 @@ button img{
     border-color: rgb(78, 114, 116);
     border-radius: 15px;
     
+}
+
+#Nav{
+    justify-content: center;
+    background-color: #009688;
+    align-items: center;
+    padding: 1rem;
 }
 
 #Question{
@@ -130,7 +91,7 @@ button img{
     align-items: center;
 }
 
-#Nav, #Footer{
+#Footer{
     background-color: #009688;
     align-items: center;
     padding: 1rem;
@@ -143,11 +104,12 @@ button img{
 
 #QImg{
     align-self: center;
-    max-width: 50%;
-    max-height:50%;
+    max-width: 40%;
+    max-height:40%;
     margin:20px;
     border-radius: 20px;
 }
+
 #QText{
     border-width: 3px;
     border-color: rgb(78, 114, 116);
@@ -169,4 +131,40 @@ button img{
     background-repeat: no-repeat;
     background-size: 80%;
     background-position: center;
+}
+
+.answer{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: center;
+    height: 100%;
+    width: 30%;
+}
+
+.btn{
+    border-color: rgb(221, 248, 237);
+    background-color: rgb(221, 248, 237);
+    color: rgb(78, 114, 116);
+    font-weight: bold;
+}
+
+.ShikenBtn{
+    border-style: solid;
+    border-color: rgb(33, 70, 66);
+    border-radius: 3px;
+    background-color: rgb(221, 248, 237);
+    border-radius: 15px;
+    font-weight: bold;
+    color: rgb(33, 70, 66);
+    height: 100%;
+    width: 40%;
+}
+
+.Selected{
+    background-color: #F6A65C;
+}
+
+#clk{
+    text-align: center;
 }
