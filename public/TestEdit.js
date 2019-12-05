@@ -19,7 +19,6 @@ class Reactive{
 
 class Game{
     constructor(name, date, desc){
-        this.id = 0;
         this.Reactives = [];
         this.Name = name;
         this.Date = date; 
@@ -245,7 +244,7 @@ function update(){
     qImg.src = Reactives[currentPage].URL;
     qImg.onerror = function(){
         console.log("Image not found, using default one");
-        qImg.src = "https://img2.gelbooru.com//images/9f/82/9f8218c9ac57e950f4b7bee129379347.jpg";
+        qImg.src = "./images/Items/hen.png";
     };
 
     if(Reactives[currentPage].imgHidden) qImg.hidden = true;

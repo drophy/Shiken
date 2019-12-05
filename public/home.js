@@ -101,6 +101,7 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
          let response = await fetch('/users', { method: 'GET' });
          let objResponse = await response.json();
 
+         console.log(objResponse);
          let arrEmails = objResponse.emails;
          let id = objResponse.id;
 
