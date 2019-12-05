@@ -104,19 +104,20 @@ var exit = document.getElementById("finalSave");
 
 
 exit.addEventListener("click", function(){
-    let items = document.getElementsByClassName("Item");
+    /*
     let itemsIn = []
     for(let i=0; i<items.length; i++){
         if(items.checked) itemsIn.push(true);
         else itemsIn.push(false);
     }
-    
+    */
     let game = new Game(
-        Reactives,
-        document.getElementById("gameName"),
-        itemsIn,
+        document.getElementById("gameName").value,
+        getFecha(),
+        ""
         );
 
+    game.Reactives = Reactives;
     console.log(JSON.stringify(game));
     
 });
@@ -269,5 +270,21 @@ function update(){
     }
     assignFunction();
 }
+
+function getFecha(){
+    let d = new Date();
+    let dia = d.getDate();
+    let mes = d.getMonth() + 1;
+    let year = d.getFullYear();
+    if (dia < 10) {
+        dia = '0' + dia;
+    }
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+    let hoy = dia + "/" + mes + "/" + year;
+    return hoy;
+    document.getElementById("Date").innerHTML = hoy;
+    }
 
 update();
