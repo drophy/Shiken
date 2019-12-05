@@ -18,12 +18,13 @@ class Reactive{
 }
 
 class Game{
-    constructor(R, N, I){
-        this.Reactives = R;
-        this.Name = N;
-        let d = new Date();
-        this.date = d.getDate; 
-        this.items = I;
+    constructor(name, date, desc){
+        this.id = 0;
+        this.Reactives = [];
+        this.Name = name;
+        this.Date = date; 
+        this.Description = desc;
+        //this.items = I;
     }
 }
 

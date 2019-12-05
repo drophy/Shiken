@@ -1,11 +1,51 @@
+class Reactive{
+    constructor(Question, Answers, URL, correct){
+        this.Question = Question;  
+        this.Answers = [];
+        for(let i=0; i<Answers.length; i++){
+            if(Answers[i]!=undefined) this.Answers.push(Answers[i]);
+        }
+        this.URL = URL;
+        this.correct = [];
+        for(let i=0; i<this.Answers.length; i++){
+            this.correct.push(false);
+        }
+        this.time = 20;
+        this.imgHidden = false;
+    }
+}
+
+class Game{
+    constructor(name, date, desc){
+        this.id = 0;
+        this.Reactives = [];
+        this.Name = name;
+        this.Date = date; 
+        this.Description = desc;
+        //this.items = I;
+    }
+}
+
+//Variables
+/*
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+*/
+let currGame;
+let currId = 0;
+
 function newQuiz(name,description) {
     let table = document.getElementById("QuizTable");
-    let q = new quiz(name, new Date(), description);
+    if(name == "") name = "My Game";
+    if(description == "") description = "My description";
+    currGame = new Game(name , getFecha(), description);
+    currGame.id = currId;
     let row = table.insertRow(-1);
+    row.setAttribute("id", `"Row${currId}"`);
     let cell1 = row.insertCell(-1);
     let cell2 = row.insertCell(-1);
     let cell3 = row.insertCell(-1);
-    cell1.innerHTML = q._name_;
+    cell1.innerHTML = currGame.Name;
     //cell1.appendChild(selectList);
     let selectList = document.createElement("select");
 
@@ -34,19 +74,21 @@ function newQuiz(name,description) {
         'change',function() { deleteFunction(this,this.value); });
 
     cell1.appendChild(selectList);
-    cell2.innerHTML = q._date_;
-    cell3.innerHTML = q._description_;
+    cell2.innerHTML = currGame.Date;
+    cell3.innerHTML = currGame.Description;
     //$("#includedContent").load("editor.html");
-    
+    currId ++;
 }
 function deleteFunction(index, value) {
     //let loli = document.getElementById("feynman").value;
     let i = index.parentNode.parentNode.rowIndex;
     if (value == "erase")
         document.getElementById("QuizTable").deleteRow(i);
-    if(value=="edit")
+    if(value=="edit"){
+        localStorage.currentGame = JSON.stringify(currGame);
         location.href='TestEdit.html'
         //alert("hola");
+    }
     if(value=="start")
         location.href = 'standings2.html'
         //alert("hola");
@@ -99,44 +141,8 @@ function sortBy() {
     }
 }
 //document.getElementById("demo").innerHTML = d.getMonth();
-class quiz {
-    constructor(name, date, description) {
-        this.name = name;
-        this.date = date;
-        this.description = description;
-    }
-    get date() {
-        return this._date_;
-    }
-    set date(value) {
-        let d = new Date();
-        let dia = d.getDate();
-        let mes = d.getMonth() + 1;
-        let year = d.getFullYear();
-        if (dia < 10) {
-            dia = '0' + dia;
-        }
-        if (mes < 10) {
-            mes = '0' + mes;
-        }
-        this._date_ = dia + "/" + mes + "/" + year;
-    }
-    get name() {
-        return this._name_;
-    }
-    set name(value) {
-        this._name_ = value;
-    }
-    get description() {
-        return this._description_;
-    }
-    set description(value) {
-        this._description_ = value;
-    }
 
-}
-
-//function fecha(){
+function getFecha(){
 let d = new Date();
 let dia = d.getDate();
 let mes = d.getMonth() + 1;
@@ -148,8 +154,9 @@ if (mes < 10) {
     mes = '0' + mes;
 }
 let hoy = dia + "/" + mes + "/" + year;
+return hoy;
 document.getElementById("Date").innerHTML = hoy;
-//}:
+}
 
 // Create new quiz
 document.querySelector('#creaQuizBTN').addEventListener('click', function() {
