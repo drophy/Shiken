@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <title>Shiken</title>
+   
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="google-signin-client_id" content="699577039635-n3fsem84d0s4uql090p9a3qkibl1af4v.apps.googleusercontent.com">
+
+   <!-- Compatibility -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Karla|Rubik&display=swap" rel="stylesheet">
+
+   <!-- Our CSS -->
+   <link rel="stylesheet" href="home.css">
+
+   <!-- Google id -->
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+   <!-- Navbar -->
+   <nav class="navbar navbar-light bg-white px-md-4">
+      <a class="navbar-brand" href="#">Shiken</a>
+      <ul class="nav">
+         <li>
+            <span class="navbar-text d-none d-lg-block">Want to create your own quiz?</span>
+         </li>
+         <li class="nav-item">
+            <a id="sign-up" class="nav-link" href="#">Sign up</a>
+         </li>
+         <li class="nav-item">
+            <a id="log-in" class="nav-link" href="#">Log in</a>
+         </li>
+      </ul>
+   </nav>
+
+   <!-- Middle Stuff -->
+   <div class="container">
+      <div class="row">
+         <div class="col">
+            <div id="content">
+               <!-- Logo -->
+               <svg id="logo" width="336" height="116" viewBox="0 0 336 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M45.488 45.072C46.736 40.368 47.36 36.432 47.36 33.264C47.36 30.096 46.496 27.504 44.768 25.488C43.04 23.376 40.784 22.32 38 22.32C35.312 22.32 33.056 23.664 31.232 26.352C29.408 29.04 28.496 32.112 28.496 35.568C28.496 42.288 32.336 48.048 40.016 52.848C47.696 57.84 52.928 61.44 55.712 63.648C58.496 65.856 60.464 67.872 61.616 69.696C64.496 74.4 65.936 79.248 65.936 84.24C65.936 92.88 63.008 99.792 57.152 104.976C51.392 110.064 44.864 112.608 37.568 112.608C28.928 112.608 21.68 108.96 15.824 101.664C11.6 96.384 7.71197 89.808 4.15997 81.936L18.128 75.168C20.336 80.928 23.072 85.824 26.336 89.856C29.696 93.792 33.248 95.76 36.992 95.76C39.392 95.76 41.552 94.992 43.472 93.456C45.392 91.92 46.352 89.616 46.352 86.544C46.352 83.376 45.152 80.448 42.752 77.76C40.352 75.072 37.136 72.336 33.104 69.552C29.072 66.768 25.952 64.512 23.744 62.784C21.536 60.96 19.088 58.656 16.4 55.872C11.312 50.496 8.76797 43.632 8.76797 35.28C8.76797 26.832 11.696 19.776 17.552 14.112C23.408 8.35199 30.368 5.47199 38.432 5.47199C46.496 5.47199 53.264 8.59199 58.736 14.832C64.304 21.072 67.088 27.504 67.088 34.128C67.088 40.656 65.84 46.272 63.344 50.976L45.488 45.072Z" stroke="white" stroke-width="5"/>
+                  <path d="M96.4077 49.392C100.824 43.92 105.144 41.184 109.368 41.184C113.688 41.184 117.192 42.624 119.88 45.504C124.584 50.496 126.936 56.832 126.936 64.512C126.936 78.432 126.408 92.976 125.352 108.144L108.648 106.56C109.32 92.448 109.656 78.576 109.656 64.944C109.656 59.856 108.36 57.312 105.768 57.312C102.696 57.312 99.3837 64.032 95.8317 77.472C95.6397 87.072 95.1597 97.968 94.3917 110.16L77.5437 108.576C78.7917 92.064 79.4157 73.632 79.4157 53.28C79.4157 32.928 79.0797 16.56 78.4077 4.17599L95.2557 5.75999C96.0237 19.296 96.4077 33.84 96.4077 49.392Z" stroke="white" stroke-width="5"/>
+                  <path d="M141.452 39.312L157.868 40.896V110.016L141.452 108.432V39.312ZM142.604 13.968L158.732 15.84L157.292 31.968L141.164 29.952L142.604 13.968Z" stroke="white" stroke-width="5"/>
+                  <path d="M174.619 109.152C174.235 99.168 174.043 84.384 174.043 64.8C174.043 45.216 174.763 24.528 176.203 2.73599L193.051 4.03198C191.611 27.552 190.891 50.208 190.891 72C200.875 59.808 208.363 47.952 213.355 36.432L224.875 46.512C220.555 56.592 214.795 66.576 207.595 76.464C215.083 85.2 221.035 93.36 225.451 100.944L214.507 111.312C209.323 103.248 201.451 93.696 190.891 82.656C190.891 93.312 191.083 102.672 191.467 110.736L174.619 109.152Z" stroke="white" stroke-width="5"/>
+                  <path d="M251.105 97.632C254.753 97.632 258.641 94.128 262.769 87.12L273.713 93.6C271.889 96.768 270.113 99.456 268.385 101.664C266.753 103.872 264.257 105.984 260.897 108C257.537 110.016 253.793 111.024 249.665 111.024C243.617 111.024 238.529 108.48 234.401 103.392C230.273 98.208 228.209 91.248 228.209 82.512C228.209 72.528 229.985 63.216 233.537 54.576C235.457 50.064 238.193 46.416 241.745 43.632C245.393 40.752 249.089 39.312 252.833 39.312C256.673 39.312 259.745 39.936 262.049 41.184C264.353 42.336 266.177 43.68 267.521 45.216C268.961 46.656 270.209 48.816 271.265 51.696C272.321 54.576 273.041 56.928 273.425 58.752C273.905 60.576 274.289 63.216 274.577 66.672C274.961 71.28 275.153 75.456 275.153 79.2C267.473 81.312 257.537 83.232 245.345 84.96C245.633 88.8 246.305 91.872 247.361 94.176C248.417 96.48 249.665 97.632 251.105 97.632ZM254.273 53.424C252.161 53.424 250.241 55.536 248.513 59.76C246.881 63.984 245.921 68.88 245.633 74.448C250.721 73.392 255.137 72.384 258.881 71.424C258.881 59.424 257.345 53.424 254.273 53.424Z" stroke="white" stroke-width="5"/>
+                  <path d="M314.492 39.456C327.164 39.456 333.5 50.016 333.5 71.136C333.5 82.272 332.876 94.08 331.628 106.56L314.78 104.976C315.836 94.032 316.364 82.992 316.364 71.856C316.364 60.624 314.78 55.008 311.612 55.008C310.076 55.008 308.108 58.896 305.708 66.672C303.308 74.352 301.82 81.888 301.244 89.28C301.436 93.216 301.82 100.32 302.396 110.592L285.548 109.008C284.492 95.472 283.964 83.568 283.964 73.296C283.964 63.024 284.252 53.808 284.828 45.648L295.484 46.8C295.676 47.568 296.396 50.688 297.644 56.16C303.212 45.024 308.828 39.456 314.492 39.456Z" stroke="white" stroke-width="5"/>
+               </svg>
+               <br>
+               <input type="text" id="code-input" maxlength="4" placeholder="CODE" onfocus="this.placeholder=''"
+               onblur="this.placeholder = 'CODE'">
+               <!-- https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link -->
+               <button id="play-button">Play!</button>
+               <p style="visibility:hidden">Oops! We couldn't find a game with that code. Please try again.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div>
+      <p id="background-credits">Background artwork by damnmyname at fiverr</p>
+   </div>
+
+   <!-- Modal -->
+   <div class="modal-bg">
+      <div class="modal2">
+         <h2>Sign up</h2>
+         <form id="modal-form" action="index.html" method="post">
+            <div class="input-container">
+               <!-- https://stackoverflow.com/questions/8639282/notempty-css-selector-is-not-working (Mo. and Derk Jan)-->
+               <input type="email" name="email" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
+               <label for="email">
+                  <span>email</span>
+               </label>
+            </div>
+            <div class="input-container">
+                  <input type="password" name="password" autocomplete="off" spellcheck="false" required onchange="this.setAttribute('value', this.value);">
+                  <label for="password">
+                     <span>password</span>
+                  </label>
+               </div>
+            <button type="button" class="disabled-button">Sign up</button>
+            <p></p>
+         </form>
+         <hr>
+         <div id="google-sign-in">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         </div>
+         <span class="modal-exit">x</span>
+      </div>
+   </div>
+
+   <!-- Bootstrap JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+   </script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+   </script>
+   <!-- Our JavaScript -->
+   <script src="home.js"></script>
+</body>
+
+</html>
