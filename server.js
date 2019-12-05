@@ -25,6 +25,7 @@ app.use(express.json()); // Carga de forma global el middleware que permite pars
 mongoose.connect('', {useNewUrlParser: true});
 
 const userSchema = new mongoose.Schema({
+   id: Number,
    email: String,
    password: String,
    games: Array
@@ -32,23 +33,39 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-// Return the emails of all users as an array
+// Return an object with a suggested ID and the emails of all users as an array
 app.get('/users', (req, res) => {
    let arrEmails = [];
+   let maxID = -1;
    
    User.find((error, data) => {
       if(error)
          console.log(error);
       else {
-         data.forEach((user) => arrEmails.push(user.email));
-         res.status(200).send(arrEmails);
+         data.forEach((user) => {
+            if(user.id && user.id > maxID)
+               maxID = user.id;
+            arrEmails.push(user.email)
+         });
+         res.status(200).send({emails: arrEmails, id: ++maxID});
       }
    });
 });
 
+// Saves a user to the database
 app.post('/users', (req, res) => {
    let body = req.body;
-   console.log(body);
+   
+   // Save user
+   const user = new User({
+      id: body.id,
+      email: body.email,
+      password: body.password,
+      games: []
+   });
+   user.save();
+
+   res.status(200).send("Ok!");
 });
 
 app.get('/tests', (req, res) => {
