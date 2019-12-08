@@ -1,32 +1,5 @@
 "use strict"
 
-class Reactive{
-    constructor(Question, Answers, URL, correct){
-        this.Question = Question;  
-        this.Answers = [];
-        for(let i=0; i<Answers.length; i++){
-            if(Answers[i]!=undefined) this.Answers.push(Answers[i]);
-        }
-        this.URL = URL;
-        this.correct = [];
-        for(let i=0; i<this.Answers.length; i++){
-            this.correct.push(false);
-        }
-        this.time = 20;
-        this.imgHidden = false;
-    }
-}
-
-class Game{
-    constructor(name, date, desc){
-        this.Reactives = [];
-        this.Name = name;
-        this.Date = date; 
-        this.Description = desc;
-        //this.items = I;
-    }
-}
-
 //Dummy data
 var R1 = new Reactive(
     "Which of the following is the religious leader of Buddhism in Gensokyo?",

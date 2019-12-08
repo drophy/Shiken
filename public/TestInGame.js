@@ -1,20 +1,3 @@
-class Reactive{
-    constructor(Question, Answers, URL, correct){
-        this.Question = Question;  
-        this.Answers = [];
-        for(let i=0; i<Answers.length; i++){
-            if(Answers[i]!=undefined) this.Answers.push(Answers[i]);
-        }
-        this.URL = URL;
-        this.correct = [];
-        for(let i=0; i<this.Answers.length; i++){
-            this.correct.push(false);
-        }
-        this.time = 20;
-        this.imgHidden = false;
-    }
-}
-
 //Sacar de la database
 let currentReactive = new Reactive(
     "Which of the following is the religious leader of Buddhism in Gensokyo?",

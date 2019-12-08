@@ -1,0 +1,81 @@
+table,
+th,
+td {
+  border: 1px solid rgb(84, 89, 94);
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(221, 227, 229)
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(255, 255, 255)
+}
+
+th {
+  background-color: rgb(22, 160, 133);
+  color: white;
+}
+
+table select {
+  width: 100%;
+  background: rgb(255, 255, 255);
+  color: rgb(50, 53, 56);
+}
+
+#tableDiv {
+  padding: 30px;
+}
+
+#optionsDiv {
+  padding: 30px;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#optionsDiv select,
+#optionsDiv input {
+  height: 38px;
+  /* same as form */
+
+  border-radius: 5px;
+  border: 1px solid rgb(221, 227, 229);
+  outline: none;
+
+  color: rgb(84, 89, 94)
+}
+
+label[for="order-criteria"] {
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+label[for="menu"] {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+#new {
+  margin-left: 10px;
+  margin-right: 5px;
+  height: 38px;
+  outline: none;
+  border: none;
+  background-color: rgb(200, 244, 226);
+  box-shadow: 1px 3px rgb(158, 235, 203);
+  position: absolute;
+  right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#user {
+  color: white;
+}
