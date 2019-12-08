@@ -2,15 +2,20 @@
 
 const port = 3000;
 const passwordHashCount = 7; // arbitrary
+const jwtKey = '';
+const EXPIRATION_TIME = 60 * 60 * 12; // in seconds, so it's 12 hours right now
 
 /// PACKAGES ///
+const authenticate = require('./authenticate.js');
+
 const fs = require('fs');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs'); // to encrypt passwords
 const jwt = require('jsonwebtoken'); // to manage tokens
 
-/// App config ///
+/// APP CONFIG ///
 const app = express();
 //app.use(express.static(__dirname));
 app.use(express.static("public")); // https://stackoverflow.com/questions/38757235/express-how-to-send-html-together-with-css-using-sendfile
@@ -20,7 +25,7 @@ app.use(express.json()); // Carga de forma global el middleware que permite pars
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 /// DATABASE ///
-mongoose.connect('mongodb+srv://Ricardo:Remilia@shikendb-laq8p.azure.mongodb.net/Shiken', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const userSchema = new mongoose.Schema({
    id: Number,
@@ -49,8 +54,6 @@ app.get('/user/:email', (req, res) =>{
       if(error)
          console.log(error);
       else {
-         //Busca el email y si existe regresa su posición en el backend
-         //Si no existe regresa -1
          for(let i=0; i<data.length; i++){
             let user = data[i];
             if(user.email == req.params.email)
@@ -80,7 +83,16 @@ app.post('/users', (req, res) => {
          });
          user.save();
       
-         res.status(200).send("Ok!");
+         let token = jwt.sign(
+            {
+               id: `${body.id}`,
+               email: `${body.email}`
+            },
+            `${jwtKey}`,
+            { expiresIn: EXPIRATION_TIME}
+         );
+
+         res.status(200).send({token: token});
       }
    })
 });
@@ -96,15 +108,15 @@ app.get('/password/:email/:pass', (req, res) =>{
             bcrypt.compare(req.params.pass, data.password, (error,result) => {
             if (result) 
             {
-               // let token = jwt.sign(
-               //    {
-               //        id: `${hardcodedUserId}`,
-               //        role: `${hardcodedUserRole}`
-               //    },
-               //    'auth1234',
-               //    { expiresIn: 60 * 60 }); // seconds
-               res.status(200).send({PasswordCorrect: true, id: `${data.id}`});
-               //res.status(200).send({PasswordCorrect: true, id: `${data.id}`, token: token});
+               let token = jwt.sign(
+                  {
+                     id: `${data.id}`,
+                     email: `${data.email}`
+                  },
+                  `${jwtKey}`,
+                  { expiresIn: EXPIRATION_TIME}
+               );
+               res.status(200).send({PasswordCorrect: true, id: `${data.id}`, token: token});
             }
             else
                res.status(200).send({PasswordCorrect: false, id: "-1"});
@@ -114,9 +126,23 @@ app.get('/password/:email/:pass', (req, res) =>{
    });
 });
 
+/// Get user quizes ///
+app.get('/quiz/:token', (req, res)=>{
+   let arrQuiz = [];
+   //Esto usa email cambiar a un token
+      User.findOne({email:req.params.token}, (error, data) => {
+         if(error){
+            console.log(error);
+            res.status(404).send({});
+         }else{
+            arrQuiz = data.games;
+            res.status(200).send({games: arrQuiz});
+         }
+      });
+});
+
 /// Tests ///
 app.get('/tests', (req, res) => {
-
 
    const complexUser = new User({
       email: 'testuser3@gmail.com',

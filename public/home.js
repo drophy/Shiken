@@ -139,6 +139,7 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
             htmlModalText.innerText = 'Oops! Please verify the email and password are correct';
          } else {
             //AQUI VA EL TOKEN EN VEZ DE EL EMAIL
+            // console.log(objResponse.token); // the token already works!
             localStorage.token = email;
             location.href='quiz_dashboard.html'; // let them in!
            
