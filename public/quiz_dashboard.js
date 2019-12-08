@@ -1,30 +1,3 @@
-class Reactive{
-    constructor(Question, Answers, URL, correct){
-        this.Question = Question;  
-        this.Answers = [];
-        for(let i=0; i<Answers.length; i++){
-            if(Answers[i]!=undefined) this.Answers.push(Answers[i]);
-        }
-        this.URL = URL;
-        this.correct = [];
-        for(let i=0; i<this.Answers.length; i++){
-            this.correct.push(false);
-        }
-        this.time = 20;
-        this.imgHidden = false;
-    }
-}
-
-class Game{
-    constructor(name, date, desc){
-        this.id = 0;
-        this.Reactives = [];
-        this.Name = name;
-        this.Date = date; 
-        this.Description = desc;
-        //this.items = I;
-    }
-}
 
 //Variables
 /*
@@ -33,6 +6,7 @@ var url = "mongodb://localhost:27017/";
 */
 let currGame;
 let currId = 0;
+let table = document.getElementById("QuizTable");
 
 function newQuiz(name,description) {
     let table = document.getElementById("QuizTable");
@@ -41,7 +15,7 @@ function newQuiz(name,description) {
     currGame = new Game(name , getFecha(), description);
     currGame.id = currId;
     let row = table.insertRow(-1);
-    row.setAttribute("id", `"Row${currId}"`);
+    row.setAttribute("id", `"Quiz${currId}"`);
     let cell1 = row.insertCell(-1);
     let cell2 = row.insertCell(-1);
     let cell3 = row.insertCell(-1);
@@ -164,3 +138,52 @@ document.querySelector('#creaQuizBTN').addEventListener('click', function() {
     newQuiz(x, y);
 });
  
+async function update(){
+    let userToken = localStorage.token;
+
+    //Debug purposes, use userToken
+    let email = "LapineMan@gmail.com";
+
+    let tests = [];
+    currId = 0;
+
+    try{
+        let response = await fetch(`/quiz/${email}`, { method: 'GET' });
+        let tests = await response.json();
+        console.log(tests.games);
+
+        
+        table.children[0].innerHTML = `
+        <tr>
+        <th style="width:200px">Quiz</th>
+        <th >Date</th>
+        <th>Description</th>
+        </tr>`;
+        for(let i=0; i<tests.games.length; i++){
+            table.children[0].innerHTML += `
+            <tr id="Quiz${i}">
+            <td>${tests.games[i].Name}<br>
+              <select name="menu" onChange="deleteFunction(this,value)" >
+                <option value="default" selected>Quiz options</option>
+                <option value="start">Start quiz</option>
+                <option value="edit">Edit</option>
+                <option value="erase" >Delete</option>
+              </select>
+            </td>
+            <td>${tests.games[i].Date}</td>
+            <td>${tests.games[i].Description}</td>
+          </tr>
+            `;
+            currId++;
+        }
+    
+    }catch(error){
+        console.log(error);
+        alert("There was a problem loading the quizzes!");
+    }
+
+}
+
+function fillTable(){
+
+}
