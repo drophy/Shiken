@@ -37,20 +37,20 @@ game.players.forEach((objPlayer) => {
 /// DEFINE BEHAVIOUR BY GAME-STATE ///
 if(!localStorage.gameState) localStorage.gameState = 0; // states: start (0), mid game (1), end (2)
 
-if(localStorage.gameState == 0) // game's start (state 1)
+if(localStorage.gameState == 0) // game's start (state 0)
 {
-   htmlBottomContainer.innerHTML = `
-      <button>Start</button>
-   `;
+   document.querySelector('h1').innerText = `CODE: ${localStorage.gameId}`;
+   htmlBottomContainer.innerHTML = `<button>Start</button>`;
    htmlBottomContainer.querySelector('button').addEventListener('click', function(event) {
       // Go to first question
       localStorage.questionIndex = 0; // 0 based index that keeps track of the current question
       localStorage.gameState = 1;
       //    location.href='hostGame.html';
    });
-} else if (localStorage.gameState == 1) // mid game (state 0)
+} else if (localStorage.gameState == 1) // mid game (state 1)
 {
    localStorage.questionIndex++;
+   document.querySelector('h1').innerText = `Standings`;
    htmlBottomContainer.innerHTML = ``;
    
    // Wait for the right number of seconds

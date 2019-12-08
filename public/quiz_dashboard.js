@@ -55,19 +55,24 @@ function newQuiz(name,description) {
     //$("#includedContent").load("editor.html");
     currId ++;
 }
-function deleteFunction(index, value) {
-    //let loli = document.getElementById("feynman").value;
+async function deleteFunction(index, value) {
     let i = index.parentNode.parentNode.rowIndex;
     if (value == "erase")
         document.getElementById("QuizTable").deleteRow(i);
     if(value=="edit"){
         localStorage.currentGame = JSON.stringify(currGame);
         location.href='TestEdit.html'
-        //alert("hola");
     }
-    if(value=="start")
+    if(value=="start") {
+        // Get code for the game
+        let response = await fetch(`/game/id/${i}`, {
+            method: 'GET',
+            headers: {'content-type':'application/json', 'x-auth':localStorage.token}
+        });
+        let objResponse = await response.json();
+        localStorage.gameId = objResponse.gameId;
         location.href = 'standings2.html'
-        //alert("hola");
+    }
 }
 function searh() {
     var input, filter, table, tr, td, i, txtValue;

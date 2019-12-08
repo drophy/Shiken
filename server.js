@@ -141,18 +141,9 @@ app.get('/quiz', authenticate, (req, res)=>{
    });
 });
 
-app.get('/quiz/:token', (req, res)=>{
-   let arrQuiz = [];
-   //Esto usa email cambiar a un token
-   User.findOne({email:req.params.token}, (error, data) => {
-      if(error){
-         console.log(error);
-         res.status(404).send({});
-      }else{
-         arrQuiz = data.games;
-         res.status(200).send({games: arrQuiz});
-      }
-   });
+/// Generate game ID ///
+app.get('/game/id/:gameindex', authenticate, (req, res) => {
+   res.status(200).send({gameId: `${req.query.id}-${req.params.gameindex}`});
 });
 
 /// Tests ///
