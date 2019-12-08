@@ -113,7 +113,7 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
             await fetch('/users', {
                method: 'POST',
                headers: {'content-type':'application/json'},
-               body: JSON.stringify({'id': id, 'email': email, 'password': password})
+               body: JSON.stringify({'id': objResponse.id, 'email': email, 'password': password})
          });
 
             localStorage.email = email; // preserve their email

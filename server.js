@@ -1,28 +1,26 @@
 'use strict'
 
 const port = 3000;
+const passwordHashCount = 7; // arbitrary
 
 /// PACKAGES ///
 const fs = require('fs');
 const express = require('express');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs'); // to encrypt passwords
+const jwt = require('jsonwebtoken'); // to manage tokens
 
-/// STUFF ///
+/// App config ///
 const app = express();
 //app.use(express.static(__dirname));
 app.use(express.static("public")); // https://stackoverflow.com/questions/38757235/express-how-to-send-html-together-with-css-using-sendfile
 
 app.use(express.json()); // Carga de forma global el middleware que permite parsear el json
 
-/// ROUTES ///
-// app.get('/', (req, res) => {
-//    res.sendFile(__dirname + "/home.css");
-//    //res.write('<h1>Practical 4: Users App</h1>');
-//    //res.send();
-// });
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 /// DATABASE ///
-mongoose.connect('LinkHere', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://Ricardo:Remilia@shikendb-laq8p.azure.mongodb.net/Shiken', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const userSchema = new mongoose.Schema({
    id: Number,
@@ -33,56 +31,35 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-// Return an object with a suggested ID and the emails of all users as an array
+/// ROUTES ///
+// app.get('/', (req, res) => {
+//    res.sendFile(__dirname + "/home.css");
+//    //res.write('<h1>Practical 4: Users App</h1>');
+//    //res.send();
+// });
+
+/// Sign up ///
+
+// Checks if email is unique and, if so, suggests an ID for the new user
 app.get('/user/:email', (req, res) =>{
    let found = false;
-   console.log(req.query);
+   let maxID = -1;
+  
    User.find((error, data) => {
       if(error)
          console.log(error);
       else {
-         
          //Busca el email y si existe regresa su posición en el backend
          //Si no existe regresa -1
          for(let i=0; i<data.length; i++){
-            if(data[i].email == req.params.email){
-               res.status(200).send({EmailExists: true, id:`${i}`});
+            let user = data[i];
+            if(user.email == req.params.email)
                found = true;
-               break;
-            }
+            if(user.id && user.id > maxID)
+               maxID = user.id;
          }
-         if(found == false) res.status(200).send({EmailExists: false, id: "-1"});
-      }
-   });
-});
 
-app.get('/password/:email/:pass', (req, res) =>{
-   console.log(req.query);
-   User.findOne({email:req.params.email}, (error, data) => {
-      if(error)
-         console.log(error);
-      else {
-         
-         if(data != null){
-            if(data.password == req.params.pass) 
-            res.status(200).send({PasswordCorrect: true, id: `${data.id}`});
-            else res.status(200).send({PasswordCorrect: false, id: "-1"});
-         }else res.status(404).send({id: "-1"});
-
-         }   
-   });
-});
-
-app.get('/users', (req, res) => {
-   let arrUsers = [];
-   User.find((error, data) => {
-      if(error)
-         console.log(error);
-      else {
-         data.forEach((user) => {
-            arrUsers.push(user)
-         });
-         res.status(200).send({Users: arrUsers});
+         res.status(200).send({EmailExists: found, id:++maxID});
       }
    });
 });
@@ -91,18 +68,53 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
    let body = req.body;
    
-   // Save user
-   const user = new User({
-      id: body.id,
-      email: body.email,
-      password: body.password,
-      games: []
-   });
-   user.save();
-
-   res.status(200).send("Ok!");
+   bcrypt.hash(body.password, passwordHashCount, (error, hash) => {
+      if(error) {
+         res.status(500).send({description:"bcrypt failed to encrypt the password"});
+      } else {
+         const user = new User({
+            id: body.id,
+            email: body.email,
+            password: hash,
+            games: []
+         });
+         user.save();
+      
+         res.status(200).send("Ok!");
+      }
+   })
 });
 
+/// Log in /// 
+app.get('/password/:email/:pass', (req, res) =>{
+   User.findOne({email:req.params.email}, (error, data) => {
+      if(error)
+         console.log(error);
+      else 
+      {
+         if(data != null){
+            bcrypt.compare(req.params.pass, data.password, (error,result) => {
+            if (result) 
+            {
+               // let token = jwt.sign(
+               //    {
+               //        id: `${hardcodedUserId}`,
+               //        role: `${hardcodedUserRole}`
+               //    },
+               //    'auth1234',
+               //    { expiresIn: 60 * 60 }); // seconds
+               res.status(200).send({PasswordCorrect: true, id: `${data.id}`});
+               //res.status(200).send({PasswordCorrect: true, id: `${data.id}`, token: token});
+            }
+            else
+               res.status(200).send({PasswordCorrect: false, id: "-1"});
+            });
+         } else res.status(404).send({id: "-1"});
+      }   
+   });
+});
+
+/// Tests ///
 app.get('/tests', (req, res) => {
 
 
@@ -132,6 +144,3 @@ app.get('/tests', (req, res) => {
 
    // mongoose.connection.close();
 });
-
-/// LISTEN THINGY ///
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
