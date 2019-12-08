@@ -89,6 +89,8 @@ htmlModalForm.addEventListener('input', function(e) {
    else htmlModalButton.classList.remove('disabled-button');
 });
 
+ 
+
 // Validate sign up / log in
 document.querySelector('#modal-form button').addEventListener("click", async function() {
    let email = htmlEmailInput.value;
@@ -98,29 +100,21 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
    {
       // Validate it's a new email
       try {
-         let response = await fetch('/users', { method: 'GET' });
+         //Localhost:3000 luego lo cambiamos por el link de Heroku
+         let response = await fetch(`/user/${email}`, { method: 'GET' });
          let objResponse = await response.json();
 
-         console.log(objResponse);
-         let arrEmails = objResponse.emails;
-         let id = objResponse.id;
+         console.log(objResponse.EmailExists);
 
-         let uniqueEmail = true;
-         arrEmails.forEach((existingEmail) => {
-            if(existingEmail === email)
-               uniqueEmail = false;
-         });
-
-         if(!uniqueEmail) {
+         if(objResponse.EmailExists == true) {
             htmlModalText.innerText = 'Oops! It seems like a user with this email already exists!';
-         }
-         else {            
+         } else {            
             // Save user in DB
             await fetch('/users', {
                method: 'POST',
                headers: {'content-type':'application/json'},
                body: JSON.stringify({'id': id, 'email': email, 'password': password})
-            });
+         });
 
             localStorage.email = email; // preserve their email
             location.href='quiz_dashboard.html'; // let them in
@@ -133,14 +127,26 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
    }
    else
    {
-      // Validate it's the right password
-      if(objPasswords[htmlEmailInput.value] == htmlPasswordInput.value) {
-         localStorage.email = htmlEmailInput.value;
-         //updateDB();
-         location.href='quiz_dashboard.html';
-      }
-      else {
-         htmlModalText.innerText = 'Oops! Please verify the email and password are correct';
+
+      try {
+         //Localhost:3000 luego lo cambiamos por el link de Heroku
+         let response = await fetch(`/password/${email}/${password}`, { method: 'GET' });
+         let objResponse = await response.json();
+
+         console.log(objResponse.id);
+
+         if(objResponse.id == "-1") {
+            htmlModalText.innerText = 'Oops! Please verify the email and password are correct';
+         } else {
+            //AQUI VA EL TOKEN EN VEZ DE EL EMAIL
+            localStorage.token = email;
+            location.href='quiz_dashboard.html'; // let them in!
+           
+         }
+      } catch(error) {
+         console.log(error);
+         alert("Sorry! There seems to be a problem with our DB at the moment");
+         return;
       }
    }
 });

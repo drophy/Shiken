@@ -22,7 +22,7 @@ app.use(express.json()); // Carga de forma global el middleware que permite pars
 // });
 
 /// DATABASE ///
-mongoose.connect('', {useNewUrlParser: true});
+mongoose.connect('LinkHere', {useNewUrlParser: true});
 
 const userSchema = new mongoose.Schema({
    id: Number,
@@ -34,20 +34,55 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 // Return an object with a suggested ID and the emails of all users as an array
+app.get('/user/:email', (req, res) =>{
+   let found = false;
+   console.log(req.query);
+   User.find((error, data) => {
+      if(error)
+         console.log(error);
+      else {
+         
+         //Busca el email y si existe regresa su posición en el backend
+         //Si no existe regresa -1
+         for(let i=0; i<data.length; i++){
+            if(data[i].email == req.params.email){
+               res.status(200).send({EmailExists: true, id:`${i}`});
+               found = true;
+               break;
+            }
+         }
+         if(found == false) res.status(200).send({EmailExists: false, id: "-1"});
+      }
+   });
+});
+
+app.get('/password/:email/:pass', (req, res) =>{
+   console.log(req.query);
+   User.findOne({email:req.params.email}, (error, data) => {
+      if(error)
+         console.log(error);
+      else {
+         
+         if(data != null){
+            if(data.password == req.params.pass) 
+            res.status(200).send({PasswordCorrect: true, id: `${data.id}`});
+            else res.status(200).send({PasswordCorrect: false, id: "-1"});
+         }else res.status(404).send({id: "-1"});
+
+         }   
+   });
+});
+
 app.get('/users', (req, res) => {
-   let arrEmails = [];
-   let maxID = -1;
-   
+   let arrUsers = [];
    User.find((error, data) => {
       if(error)
          console.log(error);
       else {
          data.forEach((user) => {
-            if(user.id && user.id > maxID)
-               maxID = user.id;
-            arrEmails.push(user.email)
+            arrUsers.push(user)
          });
-         res.status(200).send({emails: arrEmails, id: ++maxID});
+         res.status(200).send({Users: arrUsers});
       }
    });
 });
