@@ -16,8 +16,8 @@ function authenticate(req, res, next) {
                 console.log(err);
             } 
         } else {
-            req.body.id = decoded.id;
-            req.body.email = decoded.email;
+            req.query.id = decoded.id;
+            req.query.email = decoded.email;
             next(); // executes the next function
         }
     });

@@ -8,6 +8,8 @@ let currGame;
 let currId = 0;
 let table = document.getElementById("QuizTable");
 
+update();
+
 function newQuiz(name,description) {
     let table = document.getElementById("QuizTable");
     if(name == "") name = "My Game";
@@ -140,19 +142,16 @@ document.querySelector('#creaQuizBTN').addEventListener('click', function() {
  
 async function update(){
     let userToken = localStorage.token;
-
-    //Debug purposes, use userToken
-    let email = "LapineMan@gmail.com";
-
-    let tests = [];
     currId = 0;
 
     try{
-        let response = await fetch(`/quiz/${email}`, { method: 'GET' });
+        let response = await fetch(`/quiz`, { 
+            method: 'GET',
+            headers: {'content-type':'application/json', 'x-auth':userToken}
+        });
         let tests = await response.json();
         console.log(tests.games);
 
-        
         table.children[0].innerHTML = `
         <tr>
         <th style="width:200px">Quiz</th>

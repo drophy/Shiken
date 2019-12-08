@@ -127,46 +127,69 @@ app.get('/password/:email/:pass', (req, res) =>{
 });
 
 /// Get user quizes ///
+app.get('/quiz', authenticate, (req, res)=>{
+   let arrQuiz = [];
+   //Esto usa email cambiar a un token
+   User.findOne({email:req.query.email}, (error, data) => {
+      if(error){
+         console.log(error);
+         res.status(404).send({});
+      }else{
+         arrQuiz = data.games;
+         res.status(200).send({games: arrQuiz});
+      }
+   });
+});
+
 app.get('/quiz/:token', (req, res)=>{
    let arrQuiz = [];
    //Esto usa email cambiar a un token
-      User.findOne({email:req.params.token}, (error, data) => {
-         if(error){
-            console.log(error);
-            res.status(404).send({});
-         }else{
-            arrQuiz = data.games;
-            res.status(200).send({games: arrQuiz});
-         }
-      });
+   User.findOne({email:req.params.token}, (error, data) => {
+      if(error){
+         console.log(error);
+         res.status(404).send({});
+      }else{
+         arrQuiz = data.games;
+         res.status(200).send({games: arrQuiz});
+      }
+   });
 });
 
 /// Tests ///
 app.get('/tests', (req, res) => {
 
-   const complexUser = new User({
-      email: 'testuser3@gmail.com',
-      password: 'test',
-      games: []
-   });
+   // User.findOne({email:'LapineMan@gmail.com'}, (error, data) => {
+   //    if(error) console.log(error);
+   //    else
+   //    {
+   //       User.updateOne({email:'billcypher@gmail.com'}, {games:data.games}, (e) => console.log(e));
+   //       res.send('Updated!');
+   //    }
+   // });
 
-   User.updateOne({email:'testuser2@gmail.com'}, {games: array}, (error) => {
-      if(error) console.log(error);
-      else console.log("updated! (?)");
-   });
+   // const complexUser = new User({
+   //    email: 'testuser3@gmail.com',
+   //    password: 'test',
+   //    games: []
+   // });
 
-   User.find((error, data) => {
-      if(error)
-         console.log(error);
-      else
-         data.forEach((user) => console.log(user.email));
-         //console.log(data);
-   });
+   // User.updateOne({email:'testuser2@gmail.com'}, {games: array}, (error) => {
+   //    if(error) console.log(error);
+   //    else console.log("updated! (?)");
+   // });
+
+   // User.find((error, data) => {
+   //    if(error)
+   //       console.log(error);
+   //    else
+   //       data.forEach((user) => console.log(user.email));
+   //       //console.log(data);
+   // });
 
    // apple.save();
    // User.insertMany([Ricardo, drophy]);
    
-   res.sendFile(__dirname + "/public/index.html");
+   // res.sendFile(__dirname + "/public/index.html");
 
    // mongoose.connection.close();
 });
