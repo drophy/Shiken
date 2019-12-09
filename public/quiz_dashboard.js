@@ -65,7 +65,7 @@ async function deleteFunction(index, value) {
     }
     if(value=="start") {
         // Get code for the game
-        let response = await fetch(`/game/id/${i}`, {
+        let response = await fetch(`/game/id/${i-1}`, {
             method: 'GET',
             headers: {'content-type':'application/json', 'x-auth':localStorage.token}
         });

@@ -15,10 +15,11 @@ class Reactive{
         // 0 = Inactive     
     }
 }
+
 class Player{
-    constructor(n, i){
-        this.name = n;
-        this.id = i;
+    constructor(u){
+        this.username = u;
+        this.points = 0;
     }
 }
 
@@ -28,7 +29,8 @@ class Game{
         this.Name = name;
         this.Date = date; 
         this.Description = desc;
-        this.status = 0;        
+        this.Status = 0;
+        this.Players = [];
         //this.items = I;
     }
 }

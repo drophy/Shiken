@@ -70,10 +70,12 @@ document.querySelector('.modal-exit').addEventListener("click", function() {
 /// NAVEGATION BUTTONS ///
 
 // Validate game code
-document.querySelector('#play-button').addEventListener("click", function() {
+document.querySelector('#play-button').addEventListener("click", async function() {
    let code = document.querySelector('#code-input').value;
 
-   if(objGames[code]) {
+   let response = await fetch(`/game/isvalidcode?code=${code}`, {method: 'GET'});
+   let objResponse = await response.json();
+   if(objResponse.valid) {
       localStorage.code = code;
       location.href='username.html';
    }

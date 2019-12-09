@@ -14,6 +14,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs'); // to encrypt passwords
 const jwt = require('jsonwebtoken'); // to manage tokens
+const socketIO = require('socket.io');
 
 /// APP CONFIG ///
 const app = express();
@@ -22,7 +23,7 @@ app.use(express.static("public")); // https://stackoverflow.com/questions/387572
 
 app.use(express.json()); // Carga de forma global el middleware que permite parsear el json
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 /// DATABASE ///
 mongoose.connect('', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -35,6 +36,19 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", userSchema);
+
+/// SOCKETS ///
+const io = socketIO(server);
+
+// Connections in general
+io.on('connection', function(socket) {
+   console.log('someone connected to the socket');
+   
+   // New user notifications
+   socket.on('newUser', function(objData) {
+      socket.broadcast.emit('newUser', objData);
+   });
+});
 
 /// ROUTES ///
 // app.get('/', (req, res) => {
@@ -58,8 +72,9 @@ app.get('/user/:email', (req, res) =>{
             let user = data[i];
             if(user.email == req.params.email)
                found = true;
-            if(user.id && user.id > maxID)
+            if(user.id > maxID) {
                maxID = user.id;
+            }
          }
 
          res.status(200).send({EmailExists: found, id:++maxID});
@@ -141,22 +156,87 @@ app.get('/quiz', authenticate, (req, res)=>{
    });
 });
 
-/// Generate game ID ///
+/// Start game ///
+
+// Generates a gameId and sets the game's state to 1
 app.get('/game/id/:gameindex', authenticate, (req, res) => {
-   res.status(200).send({gameId: `${req.query.id}-${req.params.gameindex}`});
+   let userId = req.query.id;
+   let gameIndex = req.params.gameindex;
+   let arrGames;
+
+   User.findOne({id:userId}, (error, data) => {
+      if(error) console.log(error);
+      else
+      {
+         arrGames = data.games;
+         arrGames[gameIndex].Status = 1;
+         User.updateOne({id:userId}, {games: arrGames}, (error) => {
+            if(!error) console.log('Started game succesfully!');
+         });
+      }
+   });
+   res.status(200).send({gameId: `${userId}-${gameIndex}`});
+});
+
+/// Join Game ///
+// Validates code from home screen
+app.get('/game/isvalidcode', (req, res) => {
+   let [userId, gameId] = req.query.code.split('-');
+   User.findOne({id:userId}, (err, data) => {
+      if(data == null || !(gameId < data.games.length)) res.status(200).send({valid : false});
+      else { 
+         console.log(data.games[gameId]);
+         res.status(200).send({valid : data.games[gameId].Status == 1}); // only true if state == 1
+      }
+   });
+});
+
+// Validates user is unique and, if so, saves it to DB
+app.put('/newplayer', (req, res) => {
+   let body = req.body;
+   let [userId, gameIndex] = req.query.code.split('-');
+   let arrGames;
+
+   User.findOne({id:userId}, (error, data) => {
+      if(error) console.log(error);
+      else
+      {
+         arrGames = data.games;
+
+         let validUsername = true;
+         arrGames[gameIndex].Players.forEach(player => {
+            if(player.username == body.username) 
+               validUsername = false;
+         });
+
+         if(!validUsername) {
+            res.status(200).send({valid: false});
+         } else {
+            arrGames[gameIndex].Players.push(body);
+            User.updateOne({id:userId}, {games: arrGames}, (error) => {
+               if(!error) {
+                  console.log('Unique player!');
+                  res.status(200).send({valid: true});
+               }
+            });
+         }
+      }
+   });
+
+
 });
 
 /// Tests ///
 app.get('/tests', (req, res) => {
 
-   // User.findOne({email:'LapineMan@gmail.com'}, (error, data) => {
-   //    if(error) console.log(error);
-   //    else
-   //    {
-   //       User.updateOne({email:'billcypher@gmail.com'}, {games:data.games}, (e) => console.log(e));
-   //       res.send('Updated!');
-   //    }
-   // });
+   User.findOne({email:'LapineMan@gmail.com'}, (error, data) => {
+      if(error) console.log(error);
+      else
+      {
+         User.updateOne({email:'billcypher@gmail.com'}, {games:data.games}, (e) => console.log(e));
+         res.send('Updated!');
+      }
+   });
 
    // const complexUser = new User({
    //    email: 'testuser3@gmail.com',

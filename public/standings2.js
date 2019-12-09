@@ -23,6 +23,24 @@ let game = {
    players: [{username: 'QuantumSerenate', points: '0'}, {username: 'drophy', points: '0'}, {username: 'MellowNight', points: '0'}]
 }
 
+/// SOCKET CONNECTION ///
+//const socket = io.connect(`http://localhost:3000`);
+const socket = io(`/`);
+
+socket.on('newUser', function(objData) {
+   // Check if it's a user from this game 
+   if(objData.code === localStorage.gameId) {
+      // If so, add them to the lobby
+      let htmlCard = `
+      <div class="card">
+         <span>${objData.username}</span>
+         <span>0 pts</span>
+      </div>
+      `
+      htmlCardContainer.insertAdjacentHTML('beforeEnd', htmlCard);
+   }
+});
+
 /// DISPLAY USERS /// 
 game.players.forEach((objPlayer) => {
    let htmlCard = `
