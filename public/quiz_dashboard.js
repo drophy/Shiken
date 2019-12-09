@@ -77,7 +77,8 @@ async function deleteFunction(index, value) {
     if (value == "erase")
         document.getElementById("QuizTable").deleteRow(i);
     if(value=="edit"){
-        localStorage.currentGame = JSON.stringify(currGame);
+
+        localStorage.gameId = (i-1);
         location.href='TestEdit.html'
     }
     if(value=="start") {

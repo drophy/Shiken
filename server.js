@@ -178,6 +178,50 @@ app.post('/games/add', authenticate, (req, res) => {
    
 });
 
+/// Modify quiz ///
+app.post('/games/update/:i', authenticate, (req, res) => {
+   let body = req.body;
+   let arrGames;
+   let i = req.params.i; 
+
+   User.findOne({id:req.query.id}, (error, data) => {
+      if(error) {
+         console.log(error);
+         res.status(500).send({Message: "There was an error while fetching the data from the DB"});
+      }
+      else {
+         arrGames = data.games;
+         body.Game.Description = arrGames[i].Description;
+         arrGames[i] = (body.Game);
+         User.updateOne({id:req.query.id}, {games: arrGames}, (error) => {
+            if(!error) console.log('Added game succesfully! :D');
+         });
+         res.status(200).send({Message: "Added new quiz successfully!"});
+      }
+   });
+   
+});
+
+
+app.get('/getGames/:id', authenticate, (req, res) => {
+   let email = req.query.email;
+   let id = req.params.id;
+   let Game;
+
+   User.findOne({email:email}, (error, data) => {
+      if(error) {
+         console.log(error);
+         res.status(500).send({Message: "There was an error while fetching the data from the DB"});
+      }
+      else {
+         console.log(id);
+         Game = data.games[id];
+         res.status(200).send({Game: Game});
+      }
+   });
+   
+});
+
 /// Start game ///
 
 // Generates a gameId and sets the game's state to 1

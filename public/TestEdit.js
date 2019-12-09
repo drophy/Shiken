@@ -37,7 +37,7 @@ var R4 = new Reactive(
     "https://en.touhouwiki.net/images/7/72/ThGK_Bunbunmaru6.jpg",
     [2]
 );
-
+let DefaultReactives = [R1, R2, R3, R4];
 var Reactives = [R1, R2, R3, R4];
 
 //Manejo de páginas
@@ -90,10 +90,24 @@ exit.addEventListener("click", function(){
         );
 
     game.Reactives = Reactives;
-    console.log(JSON.stringify(game));
-    
+    addQuizDB(game);
+    location.href='quiz_dashboard.html'
 });
 
+async function addQuizDB(game){
+    //let output = JSON.stringify(game);
+    try{
+        let response = await fetch(`/games/update/${localStorage.gameId}`, { 
+            method: 'POST',
+            headers: {'content-type':'application/json', 'x-auth':localStorage.token},
+            body: JSON.stringify({Game: game})
+        });
+        let objResponse = await response.json();
+        console.log(objResponse.Message)
+    } catch(error){
+        console.log(error);
+    }
+}
 
 deleteReactive.addEventListener("click", function(){
     Reactives.pop();
@@ -256,7 +270,26 @@ function getFecha(){
     }
     let hoy = dia + "/" + mes + "/" + year;
     return hoy;
-    document.getElementById("Date").innerHTML = hoy;
+    }
+
+async function getQuiz(){
+    let userToken = localStorage.token;
+    try{
+        let response = await fetch(`/getGames/${localStorage.gameId}`, { 
+            method: 'GET',
+            headers: {'content-type':'application/json', 'x-auth':userToken}
+        });
+        let objResponse = await response.json();
+        console.log(objResponse.Game); 
+        if(objResponse.Game.Reactives.length == 0) Reactives = DefaultReactives;
+        else Reactives = objResponse.Game.Reactives;   
+    }catch(error){
+        console.log(error);
+        alert("There was a problem loading the quizzes!");
     }
 
 update();
+
+}
+
+getQuiz();

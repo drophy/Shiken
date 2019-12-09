@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const jwtKey = '';
+const jwtKey = 'ShikenSuperSecretCode';
 
 function authenticate(req, res, next) {
     let token = req.get('x-auth');
