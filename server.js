@@ -156,6 +156,28 @@ app.get('/quiz', authenticate, (req, res)=>{
    });
 });
 
+/// Create new quiz ///
+app.post('/games/add', authenticate, (req, res) => {
+   let body = req.body;
+   let arrGames;
+
+   User.findOne({id:req.query.id}, (error, data) => {
+      if(error) {
+         console.log(error);
+         res.status(500).send({Message: "There was an error while fetching the data from the DB"});
+      }
+      else {
+         arrGames = data.games;
+         arrGames.push(body.Game);
+         User.updateOne({id:req.query.id}, {games: arrGames}, (error) => {
+            if(!error) console.log('Added game succesfully! :D');
+         });
+         res.status(200).send({Message: "Added new quiz successfully!"});
+      }
+   });
+   
+});
+
 /// Start game ///
 
 // Generates a gameId and sets the game's state to 1

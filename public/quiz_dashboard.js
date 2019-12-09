@@ -10,11 +10,28 @@ let table = document.getElementById("QuizTable");
 
 update();
 
+async function addQuizDB(game){
+    //let output = JSON.stringify(game);
+    try{
+        let response = await fetch(`/games/add`, { 
+            method: 'POST',
+            headers: {'content-type':'application/json', 'x-auth':localStorage.token},
+            body: JSON.stringify({Game: game})
+        });
+        let objResponse = await response.json();
+        console.log(objResponse.Message)
+    } catch(error){
+        console.log(error);
+    }
+}
+
 function newQuiz(name,description) {
     let table = document.getElementById("QuizTable");
     if(name == "") name = "My Game";
     if(description == "") description = "My description";
     currGame = new Game(name , getFecha(), description);
+    console.log(currGame); // DBUG
+    addQuizDB(currGame);
     currGame.id = currId;
     let row = table.insertRow(-1);
     row.setAttribute("id", `"Quiz${currId}"`);
