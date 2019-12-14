@@ -27,8 +27,8 @@
         </div>
       </buttom>
       <div class="dropdown-menu ">
-        <a class="dropdown-item" href="settings.html">Settings</a>
-        <a class="dropdown-item" href="javascript:void(0);">Logout</a>
+        <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
+        <a id="log-out" class="dropdown-item" href="javascript:void(0);">Logout</a>
       </div>
     </div>
   </nav>
@@ -55,75 +55,15 @@
   </div>
 
   <div id="tableDiv">
-    <table width="100%" id="QuizTable" >
-        <tr>
-          <th style="width:200px">Quiz</th>
-          <th >Date</th>
-          <th>Description</th>
-        </tr>
+    <table width="100%" id="QuizTable">
       <tr>
-        <td>feynman path integral<br>
-          <select name="menu" id="feynman" onChange="deleteFunction(this,value)">
-            <option value="default" selected>Quiz options</option>
-            <option value="start">Start quiz</option>
-            <option value="edit">Edit</option>
-            <option value="erase" >Delete</option>
-          </select>
-        </td>
-        <td>13/02/2013</td>
-        <td>En este quiz se hara una serie de preguntas sobre la es un enfoque en el que las relaciones 
-          fundamentales de esta teoría se derivan utilizando la noción de suma sobre historias, publicada por Richard Feynman en 1948.1
-          ​ Se trata de una formulación no relativística y
-           equivalente a la ecuación de Schrödinger y a la mecánica matricial 
-           de Heisenberg, y que permite abordar algunos problemas de forma más simple.
-          </td>
-      </tr>
-      <tr>
-        <td>ecuacion de dirac<br>
-          <select name="menu" onChange="deleteFunction(this,value)">
-            <option value="default" selected>Quiz options</option>
-            <option value="start">Start quiz</option>
-            <option value="edit">Edit</option>
-            <option value="erase" >Delete</option>
-          </select>
-        </td>
-        <td>15/02/2013</td>
-        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
-          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
-          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
-          cuatro componentes </td>
-      </tr>
-      <tr>
-        <td>Metodos perturbativos<br>
-          <select name="menu" onChange="deleteFunction(this,value)" >
-            <option value="default" selected>Quiz options</option>
-            <option value="start">Start quiz</option>
-            <option value="edit">Edit</option>
-            <option value="erase" >Delete</option>
-          </select>
-        </td>
-        <td>16/02/2013</td>
-        <td>En este quiz se hara una serie de preguntas sobre la ecuacion de dirac la cual es una generalizacion
-          relativista de la ecuacuon de schordinger La función de onda ha de ser formulada como un espinor (objeto
-          matemático similar a un vector que cambia de signo con una rotación de 2π descubierto por Pauli y Dirac) de
-          cuatro componentes </td>
-      </tr>
-      <tr>
-        <td>Teoria de cuerdas<br>
-          <select name="menu" onChange="deleteFunction(this,value)">
-            <option value="default" selected>Quiz options</option>
-            <option value="start">Start quiz</option>
-            <option value="edit">Edit</option>
-            <option value="erase">Delete</option>
-          </select>
-        </td>
-        <td id="Date"></td>
-        <td>En este quiz se hara una serie de preguntas sobre la teoria de cuerdas es una hipótesis científica y modelo fundamental de
-           física teórica que asume que las partículas subatómicas, aparentemente puntuales,
-           son en realidad «estados vibracionales» de un objeto extendido más básico llamado «cuerda» o «filamento».</td>
+        <th style="width:200px">Quiz</th>
+        <th>Date</th>
+        <th>Description</th>
       </tr>
     </table>
   </div>
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
   </script>

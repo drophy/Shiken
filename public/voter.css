@@ -69,6 +69,14 @@ main {
    grid-area: D;
 }
 
+#answer-A.disabled,
+#answer-B.disabled,
+#answer-C.disabled,
+#answer-D.disabled
+{
+   background-color: rgb(188, 187, 189);
+}
+
 #info {
    background-color: rgb(221, 227, 229);
 

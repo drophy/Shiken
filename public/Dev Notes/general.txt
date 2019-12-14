@@ -1,0 +1,38 @@
+drophy
+TO DO
+- Implement items
+- Google sign in (at least comment it out >w<)
+
+OPTIMIZE
+- Sometimes initAnswers in voter.js doesn't run (Not sure if it's fixed yet, but it might be!)
+    - Theory: TestInGame sends the message before voter.js can listen for it
+    - Solution: either have TestInGame send it after a bit, a couple times...
+    - when voter.js says it's ready (but, just the first one? all? what if someone disconnects?)
+    - or have voter.js leave all 4 answers enabled if no message is received after a bit 
+    - (if you go with the last option, validate in TestInGame that it's < correct.length or whatever)
+    - Or, could we send the info to the server via a socket and have the others request it? And if they
+    - request it before it's ready... maybe use a promise? 
+- Block start quiz option till they edit it (send an alert and don't allow it to work? or start dummy quiz)
+- Socket rooms or something. Having many games running at the same time would be a mess right now
+
+IDEAS
+- Integrate standings.html at the end (in standings2 there's a 'next' button instead of a 'finish one')
+- I feel maybe the question and answers should be shown in answers.html too bc they might not remember
+
+Ricardo
+TO DO
+- Make image have a max size or something so it never scrolls
+- Define how items are going to work
+- Edit items screen
+- Have modal load the right quiz name instead of always 'My Game' or whatever it is
+- Edit default quiz
+- Consider moving save and exit button to somewhere more visible
+- Add an "add image" option in editor. If no image is given, don't show it (instead of the toggle option)
+
+Pedro
+- Delete quiz from database
+- Change 'user' on navbar to the user's email (or just the logout option)
+- Remove image at quiz dashboard
+- Change colors for new quiz button; it's hard to read on some screens
+- Maybe remove description field
+- Use bottons instead of a drop down to start/edit/delete

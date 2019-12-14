@@ -23,7 +23,7 @@ app.use(express.static("public")); // https://stackoverflow.com/questions/387572
 
 app.use(express.json()); // Carga de forma global el middleware que permite parsear el json
 
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const server = app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${port}!`));
 
 /// DATABASE ///
 mongoose.connect('', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -42,11 +42,24 @@ const io = socketIO(server);
 
 // Connections in general
 io.on('connection', function(socket) {
-   console.log('someone connected to the socket');
-   
    // New user notifications
    socket.on('newUser', function(objData) {
       socket.broadcast.emit('newUser', objData);
+   });
+
+   // Next screen commands
+   socket.on('next', function(objData) {
+      socket.broadcast.emit('next', objData);
+   });
+
+   // Host tells players how many possible answers there are
+   socket.on('answerQuantity', function(objData) {
+      socket.broadcast.emit('answerQuantity', objData);
+   });
+
+   // Player's answers sent to host
+   socket.on('answer', function(objData) {
+      socket.broadcast.emit('answer', objData);
    });
 });
 
@@ -199,9 +212,8 @@ app.post('/games/update/:i', authenticate, (req, res) => {
          res.status(200).send({Message: "Added new quiz successfully!"});
       }
    });
-   
-});
 
+});
 
 app.get('/getGames/:id', authenticate, (req, res) => {
    let email = req.query.email;
@@ -219,12 +231,12 @@ app.get('/getGames/:id', authenticate, (req, res) => {
          res.status(200).send({Game: Game});
       }
    });
-   
+
 });
 
 /// Start game ///
 
-// Generates a gameId and sets the game's state to 1
+// Generates a gameId, clears any previous players and sets the game's state to 1
 app.get('/game/id/:gameindex', authenticate, (req, res) => {
    let userId = req.query.id;
    let gameIndex = req.params.gameindex;
@@ -236,12 +248,34 @@ app.get('/game/id/:gameindex', authenticate, (req, res) => {
       {
          arrGames = data.games;
          arrGames[gameIndex].Status = 1;
+         arrGames[gameIndex].Players = [];
          User.updateOne({id:userId}, {games: arrGames}, (error) => {
             if(!error) console.log('Started game succesfully!');
          });
       }
    });
    res.status(200).send({gameId: `${userId}-${gameIndex}`});
+});
+
+// Changes game status to 0 (unjoinable) and returns the game object to the host
+app.get('/startgame/:gameindex', authenticate, (req, res) => {
+   let userId = req.query.id;
+   let gameIndex = req.params.gameindex;
+   let arrGames;
+
+   User.findOne({id:userId}, (error, data) => {
+      if(error) console.log(error);
+      else
+      {
+         arrGames = data.games;
+         arrGames[gameIndex].Status = 0;
+         User.updateOne({id:userId}, {games: arrGames}, (error) => {
+            if(!error) console.log('Started game succesfully!');
+         });
+
+         res.status(200).send(arrGames[gameIndex]);
+      }
+   });
 });
 
 /// Join Game ///
@@ -251,7 +285,6 @@ app.get('/game/isvalidcode', (req, res) => {
    User.findOne({id:userId}, (err, data) => {
       if(data == null || !(gameId < data.games.length)) res.status(200).send({valid : false});
       else { 
-         console.log(data.games[gameId]);
          res.status(200).send({valid : data.games[gameId].Status == 1}); // only true if state == 1
       }
    });
@@ -281,7 +314,6 @@ app.put('/newplayer', (req, res) => {
             arrGames[gameIndex].Players.push(body);
             User.updateOne({id:userId}, {games: arrGames}, (error) => {
                if(!error) {
-                  console.log('Unique player!');
                   res.status(200).send({valid: true});
                }
             });

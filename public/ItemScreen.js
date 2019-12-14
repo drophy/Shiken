@@ -1,3 +1,10 @@
+/// SOCKETS ///
+const socket = io(`/`);
+
+socket.on('next', function(objData) {
+    // Check if it's a message from our game 
+    if(objData.code === localStorage.code) location.href='voter.html';
+ });
 
 //Variables
 let Target = document.getElementById("Target");

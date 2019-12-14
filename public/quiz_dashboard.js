@@ -10,6 +10,11 @@ let table = document.getElementById("QuizTable");
 
 update();
 
+document.querySelector('#log-out').addEventListener('click', function(event){
+    localStorage.removeItem('token');
+    location.href='index.html';
+});
+
 async function addQuizDB(game){
     //let output = JSON.stringify(game);
     try{
@@ -89,6 +94,8 @@ async function deleteFunction(index, value) {
         });
         let objResponse = await response.json();
         localStorage.gameId = objResponse.gameId;
+        localStorage.gameState = 0; // states: start (0), mid game (1), end (2)
+        localStorage.removeItem('objGame'); // so data from the previous game isn't used
         location.href = 'standings2.html'
     }
 }
@@ -173,7 +180,6 @@ async function update(){
             headers: {'content-type':'application/json', 'x-auth':userToken}
         });
         let tests = await response.json();
-        console.log(tests.games);
 
         table.children[0].innerHTML = `
         <tr>

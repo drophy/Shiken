@@ -31,7 +31,9 @@ let objPasswords = {
 /// LOCAL STORAGE ///
 // Note: keys and values for local storage must be strings :o
 // Consider using localStorage.isLoggedIn to automatically take you to the host dashboard until you log out
-localStorage.email = "";
+
+// If user is logged in, they shouldn't see this screen
+if(localStorage.token) location.href='quiz_dashboard.html';
 
 /// HTML ELEMENTS ///
 let htmlModalForm = document.querySelector('#modal-form');
@@ -112,13 +114,13 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
             htmlModalText.innerText = 'Oops! It seems like a user with this email already exists!';
          } else {            
             // Save user in DB
-            await fetch('/users', {
+            response = await fetch('/users', {
                method: 'POST',
                headers: {'content-type':'application/json'},
                body: JSON.stringify({'id': objResponse.id, 'email': email, 'password': password})
-         });
-
-            localStorage.email = email; // preserve their email
+            });
+            objResponse = await response.json();
+            localStorage.token = objResponse.token;
             location.href='quiz_dashboard.html'; // let them in
          }
       } catch(error) {
@@ -131,7 +133,6 @@ document.querySelector('#modal-form button').addEventListener("click", async fun
    {
 
       try {
-         //Localhost:3000 luego lo cambiamos por el link de Heroku
          let response = await fetch(`/password/${email}/${password}`, { method: 'GET' });
          let objResponse = await response.json();
 

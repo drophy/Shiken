@@ -1,3 +1,6 @@
+console.log('voter.js connected');
+
+/// CLASSES ///
 class SleepingChick{
    constructor(im){
        this.clicks = 0;
@@ -6,55 +9,33 @@ class SleepingChick{
    }
 }
 
-console.log('voter.js connected');
+/// SOCKETS ///
+const socket = io(`/`);
 
-/// DATA BASE ///
-/*
-function getDB() {
-   objGames = localStorage.objGames? JSON.parse(localStorage.objGames) : {};
-}
+let answerQuantityIsKnown = false;
+socket.on('answerQuantity', function(objData) {
+   console.log("got answer quantity message");
+   console.log(objData);
 
-function updateDB() {
-   localStorage.objGames = JSON.stringify(objGames);
-}
+   // Check if it's a message from our game 
+   if(objData.code === localStorage.code && !answerQuantityIsKnown) {
+      // Enable or disable answers
+      initAnswers(objData.answerQuantity);
+      answerQuantityIsKnown = true; // so it won't init again if another message is received
+   }
+});
 
-let objGames;
-getDB();
-let game = objGames[localStorage.code];
-*/
-let game = {
-   players: {'QuantumSerenate': '321', 'drophy':'444'}
-}
-let username = 'drophy'; // get from local storage
-let answerQuantity = 2;
-let correctAnswer = 'A';
-let totalTime = 10;
+socket.on('next', function(objData) {
+   // Check if it's a message from our game 
+   if(objData.code === localStorage.code)
+      if(objData.done == false) location.href='ItemScreen.html';
+      else location.href = 'index.html';
+});
 
-let container = document.getElementById("ItemDiv");
-let activeItems = [false, false, false, false];
-let chicks = [];
-let lastChick = 0;
-
-/// COUNT TIME ///
-let timePassed = 0; // time in seconds
-let playerAnswerTime;
-
-for(let i = 0; i < totalTime-1; i++) {
-   setTimeout(function() {
-      timePassed++;
-   }, 1000*i);
-}
-
-//setTimeout(finish, 1000*(totalTime-1));
-
-/// ENABLE / DISABLE ANSWERS ///
-let points;
-initAnswers(answerQuantity);
-
-/// FUNCTIONS ///
+/// CORE FUNCTIONS ///
 function pickAnswer(event) {
-   // Save time-stamp
-   playerAnswerTime = timePassed;
+   // Send answer
+   socket.emit('answer', {code: localStorage.code, username: localStorage.username, answer:event.target.innerText});
 
    // Unmark all as selected
    document.querySelectorAll('.answer').forEach((answer) => {
@@ -63,11 +44,22 @@ function pickAnswer(event) {
 
    // Mark target as selected
    event.target.style.boxShadow = '0px 0px 10px #000000';
-
-   // If correct, calculate points
-   points = event.target.innerText == correctAnswer? 100 - 50*(timePassed/totalTime) : 0;
-   // console.log(points); // DBUG
 }
+
+function initAnswers(answerQuantity) {
+   document.querySelectorAll('.answer').forEach((answer, i) => {
+      if(i+1 <= answerQuantity) {
+         answer.classList.remove('disabled');
+         answer.addEventListener('click', pickAnswer);
+      }
+   })
+}
+
+/// POWER UP FUNCTIONS ///
+let container = document.getElementById("ItemDiv");
+let activeItems = [false, false, false, false];
+let chicks = [];
+let lastChick = 0;
 
 function initItems(){
    if(activeItems[0] == true){
@@ -178,25 +170,6 @@ function EggFrame(){
       document.querySelector("#egg").remove;
       clearInterval(EggFrame);
    }
-}
-
-
-function initAnswers(answerQuantity) {
-   document.querySelectorAll('.answer').forEach((answer, i) => {
-      if(i+1 <= answerQuantity) {
-         answer.addEventListener('click', pickAnswer);
-      } else {
-         answer.style.backgroundColor = 'rgb(188, 187, 189)';
-      }
-   })
-}
-
-function finish() {
-   // Save points to DB
-   game.players[username] = Number(game.players[username]) + points;
-
-   // Go to powers screen
-   location.href='ItemScreen.html';
 }
 
 /// CHICKEN ANIM TEST ///

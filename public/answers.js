@@ -1,9 +1,32 @@
+/// PARAMETERS ///
+const WAIT_DURATION = 5; // seconds
+
+/// LOCAL STORAGE ///
+let objGame;
+
+function loadGame() {
+   objGame = localStorage.objGame? JSON.parse(localStorage.objGame) : {Players:[]};
+}
+function updateGame() {
+   localStorage.objGame = JSON.stringify(objGame);
+}
+
+loadGame();
+
+let currentReactive = objGame.Reactives[localStorage.questionIndex];
+
 /// INITIAL DATA ///
-let arrAnswerVotes = [12, 19, 3, 7];
-let arrIsCorrect = [true, false, false, true];
+console.log(localStorage.arrAnswerVotes);
+let arrAnswerVotes = JSON.parse(localStorage.arrAnswerVotes);
+console.log(arrAnswerVotes); // dbug
+const arrIsCorrect = currentReactive.correct;
 
 /// MAIN ///
 generateChart(arrAnswerVotes, arrIsCorrect);
+
+setTimeout(() => {
+   location.href = 'standings2.html';
+}, 1000*WAIT_DURATION);
 
 /// FUNCTIONS ///
 function generateChart(arrAnswerVotes, arrIsCorrect) {
