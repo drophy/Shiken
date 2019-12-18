@@ -1,3 +1,13 @@
+:root {
+    /* --primary-color: rgb(241, 196, 15); */
+    --primary-color: rgb(243, 156, 18);
+    /* --primary-color: #e67e22; */
+    
+    --secondary-color: #e67e22;
+    /* --secondary-color: #d35400; */
+
+    --answer-color: #FFFFFF;
+}
 
 html, body {
     margin: 0; 
@@ -10,35 +20,29 @@ html, body {
     min-height:100vh;
     max-height: 100vw;
     width: 100vw;
-    background-color: rgb(221, 248, 237);
+    background-color: #FFFFFF;
     position: absolute;
 }
 
 #Answers div{
-    background-color: rgb(204, 232, 213);
+    background-color: var(--answer-color);
     padding: 10px;
     border-radius: 10px;
 }
 
 #Answers{
     width: 70%;
-    border-left-color: rgb(78, 114, 116);
-    border-right-color: rgb(78, 114, 116);
+    border-left-color: var(--secondary-color, #e67e22);
+    border-right-color: var(--secondary-color, #e67e22);
     border-left-style: solid;
     border-right-style: solid;
        
 }
 
-#Answers button:active{
-    background-color: #F6A65C;
-}
-
-
 .txt{
     width:100%;
     border-radius: 10px;
     border-style: solid;
-    border-color: rgb(78, 114, 116);
 }
 
 button img{
@@ -46,18 +50,9 @@ button img{
     width: 25px;
 }
 
-#minusBtn{
-    background-image: url("minus.png");
-}
-
-#plusBtn{
-    background-image: url("plus.png");
-}
-
 #navDiv input{
     background-color: white;
     text-align: center;
-    border-color: rgb(78, 114, 116);
     border-width: 3px;
     width:80px;
 }
@@ -67,14 +62,16 @@ button img{
     height: 50px;
     border-style:solid;
     border-width: 3px;
-    border-color: rgb(78, 114, 116);
+    border-color: var(--secondary-color, #d35400);
     border-radius: 15px;
+    text-align: center;
     
 }
 
 #Nav{
     justify-content: center;
-    background-color: #009688;
+    /* background-color: #009688; */
+    background-color: var(--primary-color);
     align-items: center;
     padding: 1rem;
 }
@@ -82,17 +79,18 @@ button img{
 #Question{
     flex-direction: row;
     position:relative;
-    background-color: rgb(204, 232, 213);
-    border-radius: 5px;
-    width: 90%;
+    background-color: rgb(221, 227, 229);
+    border-radius: 20px;
+    width: 80%;
     text-align: center;
-    margin: auto;
+    margin: 30px auto;
     justify-content: space-between;
     align-items: center;
 }
 
 #Footer{
-    background-color: #009688;
+    /* background-color: #009688; */
+    background-color: rgb(84, 89, 94);
     align-items: center;
     padding: 1rem;
     justify-content: space-between;
@@ -106,6 +104,7 @@ button img{
     align-self: center;
     max-width: 40%;
     max-height:40%;
+    max-height: 60vh; /* the line above didn't seem to have any effect :o */
     margin:20px;
     border-radius: 20px;
 }
@@ -163,8 +162,4 @@ button img{
 
 .Selected{
     background-color: #F6A65C;
-}
-
-#clk{
-    text-align: center;
 }

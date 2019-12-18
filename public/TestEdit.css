@@ -80,6 +80,7 @@ button img{
     align-self: center;
     max-width: 40%;
     max-height:40%;
+    max-height:60vh;
     margin:20px;
     border-radius: 20px;
 }
