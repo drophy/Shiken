@@ -231,7 +231,7 @@ function update(){
     qImg.src = Reactives[currentPage].URL;
     qImg.onerror = function(){
         console.log("Image not found, using default one");
-        qImg.src = "./images/Items/hen.png";
+        qImg.src = "images/imageNotFound.png";
     };
 
     if(Reactives[currentPage].imgHidden) qImg.hidden = true;
@@ -281,8 +281,14 @@ async function getQuiz(){
         });
         let objResponse = await response.json();
         console.log(objResponse.Game); 
-        if(objResponse.Game.Reactives.length == 0) Reactives = DefaultReactives;
-        else Reactives = objResponse.Game.Reactives;   
+        if(objResponse.Game.Reactives.length == 0) {
+        
+            Reactives = DefaultReactives;
+        }
+        else {
+            document.getElementById("gameName").value = objResponse.Game.Name;
+            Reactives = objResponse.Game.Reactives;   
+        }
     }catch(error){
         console.log(error);
         alert("There was a problem loading the quizzes!");

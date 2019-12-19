@@ -2,8 +2,10 @@ drophy
 TO DO
 - Implement items
 - Google sign in (at least comment it out >w<)
+- Change chicken image in our username page
 
 IMPROVE
+- On Log in /Sign up, have Enter be an alternative to the button pls
 - Sometimes initAnswers in voter.js doesn't run (Not sure if it's fixed yet, but it might be!)
     - Theory: TestInGame sends the message before voter.js can listen for it
     - Solution: either have TestInGame send it after a bit, a couple times...
@@ -23,9 +25,11 @@ Ricardo
 TO DO
 - Edit items screen
 - Have modal load the right quiz name instead of always 'My Game' or whatever it is
+- Remove the options to pick which items are enabled
 - Edit default quiz
 
 IMPROVE
+- When setting an answer to correct/incorrect, the check isn't consistent
 - Consider moving save and exit button to somewhere more visible
 - Add an "add image" option in editor. If no image is given, don't show it (instead of the toggle option)
 
