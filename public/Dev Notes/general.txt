@@ -24,7 +24,6 @@ IDEAS
 Ricardo
 TO DO
 - Edit items screen
-- Remove the options to pick which items are enabled
 
 IMPROVE
 - When setting an answer to correct/incorrect, the check isn't consistent
