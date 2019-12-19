@@ -24,9 +24,7 @@ IDEAS
 Ricardo
 TO DO
 - Edit items screen
-- Have modal load the right quiz name instead of always 'My Game' or whatever it is
 - Remove the options to pick which items are enabled
-- Edit default quiz
 
 IMPROVE
 - When setting an answer to correct/incorrect, the check isn't consistent
@@ -34,8 +32,11 @@ IMPROVE
 - Add an "add image" option in editor. If no image is given, don't show it (instead of the toggle option)
 
 Pedro
+TO DO
 - Delete quiz from database
 - Change 'user' on navbar to the user's email (or just the logout option)
+
+IMPROVE
 - Remove image at quiz dashboard
 - Change colors for new quiz button; it's hard to read on some screens
 - Maybe remove description field

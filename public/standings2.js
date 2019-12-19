@@ -75,8 +75,9 @@ if(localStorage.gameState == 0) // game's start (state 0)
 
       // Go to first question
       localStorage.questionIndex = 0; // 0 based index that keeps track of the current question
-      localStorage.gameState = 1; // game starts
       socket.emit(`next`, {code: localStorage.gameId}); // tell players to move to their next screen
+      if(localStorage.questionIndex == objGame.Reactives.length-1) localStorage.gameState = 2; // finish screen
+      else localStorage.gameState = 1; // mid-game standings
       location.href='TestInGame.html'; // go to our next screen
    });
 } 

@@ -1,44 +1,59 @@
 "use strict"
 
 //Dummy data
-var R1 = new Reactive(
-    "Which of the following is the religious leader of Buddhism in Gensokyo?",
-    ["Toyosatomimi No Miko",
-    "Byakuren Hijiri",
-    "Kanako Yasaka",
-    "Marisa Kirisame"],
-    "https://en.touhouwiki.net/images/8/87/ThGKPartI.png",
+// let R1 = new Reactive(
+//     "Which of the following is the religious leader of Buddhism in Gensokyo?",
+//     ["Toyosatomimi No Miko",
+//     "Byakuren Hijiri",
+//     "Kanako Yasaka",
+//     "Marisa Kirisame"],
+//     "https://en.touhouwiki.net/images/8/87/ThGKPartI.png",
+//     [1]
+// );
+// let R2 = new Reactive(
+//     "Who was the moderator in Hieda no Akyuu's Symposium",
+//     ["Kirisame Marisa",
+//     "Hakurei Reimu",
+//     "Hieda no Akyuu",
+//     undefined],
+//     undefined,
+//     [0]
+// );
+// let R3 = new Reactive(
+//     "Who participated in the Guerrilla Concerts?",
+//     [undefined,
+//     "Kasodani Kyouko",
+//     undefined,
+//     "Mystia Lorelei"],
+//     "https://en.touhouwiki.net/images/e/e0/ThGK_Bunbunmaru1.jpg",
+//     [1, 3]
+// );
+// let R4 = new Reactive(
+//     "Which species of Tengu prevents Kanako from building the tramway to the Youkai Mountain's top?",
+//     ["Crow Tengu",
+//     "Gray Wolf Tengu",
+//     "White Wolf Tengu",
+//     "Marisa Kirisame, not the Tengu"],
+//     "https://en.touhouwiki.net/images/7/72/ThGK_Bunbunmaru6.jpg",
+//     [2]
+// );
+
+let R1 = new Reactive(
+    `Type your question here! Click on the image to change it or on 'Toggle Image' if you don't want to display an image.
+
+    When you're done, click the gear icon and save your quiz! :)`,
+    ["Option 1",
+    "Option 2",
+    "Option 3",
+    "Option 4"],
+    "images/MountFuji.jpg",
     [1]
 );
-var R2 = new Reactive(
-    "Who was the moderator in Hieda no Akyuu's Symposium",
-    ["Kirisame Marisa",
-    "Hakurei Reimu",
-    "Hieda no Akyuu",
-    undefined],
-    undefined,
-    [0]
-);
-var R3 = new Reactive(
-    "Who participated in the Guerrilla Concerts?",
-    [undefined,
-    "Kasodani Kyouko",
-    undefined,
-    "Mystia Lorelei"],
-    "https://en.touhouwiki.net/images/e/e0/ThGK_Bunbunmaru1.jpg",
-    [1, 3]
-);
-var R4 = new Reactive(
-    "Which species of Tengu prevents Kanako from building the tramway to the Youkai Mountain's top?",
-    ["Crow Tengu",
-    "Gray Wolf Tengu",
-    "White Wolf Tengu",
-    "Marisa Kirisame, not the Tengu"],
-    "https://en.touhouwiki.net/images/7/72/ThGK_Bunbunmaru6.jpg",
-    [2]
-);
-let DefaultReactives = [R1, R2, R3, R4];
-var Reactives = [R1, R2, R3, R4];
+
+let DefaultReactives = [R1];
+let Reactives = [R1];
+
+getQuiz();
 
 //Manejo de páginas
 var currentPage = 0;
@@ -281,21 +296,19 @@ async function getQuiz(){
         });
         let objResponse = await response.json();
         console.log(objResponse.Game); 
-        if(objResponse.Game.Reactives.length == 0) {
         
+        document.getElementById("gameName").value = objResponse.Game.Name;
+        if(objResponse.Game.Reactives.length == 0) {
             Reactives = DefaultReactives;
         }
         else {
-            document.getElementById("gameName").value = objResponse.Game.Name;
             Reactives = objResponse.Game.Reactives;   
         }
     }catch(error){
+        console.log("There was a problem loading the quizzes!");
         console.log(error);
-        alert("There was a problem loading the quizzes!");
     }
 
 update();
 
 }
-
-getQuiz();

@@ -11,6 +11,9 @@ function updateGame() {
 loadGame();
 
 let currentReactive = objGame.Reactives[localStorage.questionIndex];
+if(!currentReactive) {
+    alert('Failed to load the first question. Please make sure you edited and saved your quiz first!');
+}
 let answerQuantity = currentReactive.Answers.length;
 
 /// SOCKET CONNECTION ///
